@@ -26,13 +26,24 @@ void sendTestMessage()
 			case DATABACK:
 				break;
 			case NEW_TOKEN:
+			{
+				uint8_t* msg = osMemoryPoolAlloc(memPool,osWaitForever);
+				msg[0] = 0xFF;
+				for(uint8_t i=0; i<15;i++)
+				{
+					msg[1 + i] = gTokenInterface.station_list[i];
+				}
+				msg[16] = 0;
+				queueMsg.type = NEW_TOKEN;
+				queueMsg.addr = msg
+			}
 				break;
 			case START:
 				break;
 			case STOP:
 				break;
 			case DATA_IND:
-				
+			{
 				uint8_t* msg = osMemoryPoolAlloc(memPool,osWaitForever);											
 				msg[0] = gTokenInterface.myAddress << 3 + queueMsg.sapi; // Control 1
 				msg[1] = queueMsg.addr << 3 + queueMsg.sapi;
@@ -50,7 +61,7 @@ void sendTestMessage()
 				
 				queueMsg.type = TO_PHY;
 				queueMsg.anyPtr = msg;
-		
+			}
 				break;
 		}
 		

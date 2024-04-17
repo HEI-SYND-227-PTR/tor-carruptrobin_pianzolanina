@@ -124,11 +124,13 @@ Section Cross References
     time_receiver.o(i.TimeReceiver) refers to rtx_msgqueue.o(i.osMessageQueuePut) for osMessageQueuePut
     time_receiver.o(i.TimeReceiver) refers to main.o(.data) for queue_timeR_id
     mac_sender.o(i.MacSender) refers to mac_sender.o(i.sendTestMessage) for sendTestMessage
+    mac_sender.o(i.sendTestMessage) refers to rtx_msgqueue.o(i.osMessageQueueGet) for osMessageQueueGet
+    mac_sender.o(i.sendTestMessage) refers to main.o(i.CheckRetCode) for CheckRetCode
     mac_sender.o(i.sendTestMessage) refers to rtx_mempool.o(i.osMemoryPoolAlloc) for osMemoryPoolAlloc
+    mac_sender.o(i.sendTestMessage) refers to strlen.o(.text) for strlen
     mac_sender.o(i.sendTestMessage) refers to rt_memcpy_v6.o(.text) for __aeabi_memcpy
     mac_sender.o(i.sendTestMessage) refers to rtx_msgqueue.o(i.osMessageQueuePut) for osMessageQueuePut
-    mac_sender.o(i.sendTestMessage) refers to main.o(i.CheckRetCode) for CheckRetCode
-    mac_sender.o(i.sendTestMessage) refers to main.o(.data) for memPool
+    mac_sender.o(i.sendTestMessage) refers to main.o(.data) for queue_chatR_id
     mac_sender.o(i.sendTestMessage) refers to main.o(.bss) for gTokenInterface
     phy_receiver.o(i.HAL_UART_RxCpltCallback) refers to stm32f7xx_hal_uart.o(i.HAL_UART_Receive_IT) for HAL_UART_Receive_IT
     phy_receiver.o(i.HAL_UART_RxCpltCallback) refers to rtx_msgqueue.o(i.osMessageQueuePut) for osMessageQueuePut
@@ -5316,211 +5318,211 @@ Image Symbol Table
     i.scaled_pixel_callback                  0x08016324   Section        0  mf_scaledfont.o(i.scaled_pixel_callback)
     scaled_pixel_callback                    0x08016325   Thumb Code    90  mf_scaledfont.o(i.scaled_pixel_callback)
     i.sendTestMessage                        0x08016380   Section        0  mac_sender.o(i.sendTestMessage)
-    i.set_backlight                          0x08016454   Section        0  gdisp_lld_stm32ltdc.o(i.set_backlight)
-    set_backlight                            0x08016455   Thumb Code    32  gdisp_lld_stm32ltdc.o(i.set_backlight)
-    i.setglobalwindow                        0x08016478   Section        0  gdisp.o(i.setglobalwindow)
-    setglobalwindow                          0x08016479   Thumb Code    48  gdisp.o(i.setglobalwindow)
-    i.skip_pixels                            0x080164a8   Section        0  mf_rlefont.o(i.skip_pixels)
-    skip_pixels                              0x080164a9   Thumb Code    46  mf_rlefont.o(i.skip_pixels)
-    i.sq16                                   0x080164d6   Section        0  mf_wordwrap.o(i.sq16)
-    sq16                                     0x080164d7   Thumb Code     8  mf_wordwrap.o(i.sq16)
-    i.stdout_putchar                         0x080164de   Section        0  retarget_io.o(i.stdout_putchar)
-    stdout_putchar                           0x080164df   Thumb Code    12  retarget_io.o(i.stdout_putchar)
-    i.strip_spaces                           0x080164ea   Section        0  mf_justify.o(i.strip_spaces)
-    strip_spaces                             0x080164eb   Thumb Code    96  mf_justify.o(i.strip_spaces)
-    i.svcRtxDelay                            0x0801654a   Section        0  rtx_delay.o(i.svcRtxDelay)
-    svcRtxDelay                              0x0801654b   Thumb Code    56  rtx_delay.o(i.svcRtxDelay)
-    i.svcRtxEventFlagsClear                  0x08016582   Section        0  rtx_evflags.o(i.svcRtxEventFlagsClear)
-    svcRtxEventFlagsClear                    0x08016583   Thumb Code    68  rtx_evflags.o(i.svcRtxEventFlagsClear)
-    i.svcRtxEventFlagsNew                    0x080165c8   Section        0  rtx_evflags.o(i.svcRtxEventFlagsNew)
-    svcRtxEventFlagsNew                      0x080165c9   Thumb Code   156  rtx_evflags.o(i.svcRtxEventFlagsNew)
-    i.svcRtxEventFlagsSet                    0x0801666c   Section        0  rtx_evflags.o(i.svcRtxEventFlagsSet)
-    svcRtxEventFlagsSet                      0x0801666d   Thumb Code   154  rtx_evflags.o(i.svcRtxEventFlagsSet)
-    i.svcRtxEventFlagsWait                   0x08016708   Section        0  rtx_evflags.o(i.svcRtxEventFlagsWait)
-    svcRtxEventFlagsWait                     0x08016709   Thumb Code   168  rtx_evflags.o(i.svcRtxEventFlagsWait)
-    i.svcRtxKernelGetState                   0x080167b4   Section        0  rtx_kernel.o(i.svcRtxKernelGetState)
-    svcRtxKernelGetState                     0x080167b5   Thumb Code    20  rtx_kernel.o(i.svcRtxKernelGetState)
-    i.svcRtxKernelGetTickCount               0x080167cc   Section        0  rtx_kernel.o(i.svcRtxKernelGetTickCount)
-    svcRtxKernelGetTickCount                 0x080167cd   Thumb Code    16  rtx_kernel.o(i.svcRtxKernelGetTickCount)
-    i.svcRtxKernelGetTickFreq                0x080167e0   Section        0  rtx_kernel.o(i.svcRtxKernelGetTickFreq)
-    svcRtxKernelGetTickFreq                  0x080167e1   Thumb Code    16  rtx_kernel.o(i.svcRtxKernelGetTickFreq)
-    i.svcRtxKernelInitialize                 0x080167f4   Section        0  rtx_kernel.o(i.svcRtxKernelInitialize)
-    svcRtxKernelInitialize                   0x080167f5   Thumb Code   528  rtx_kernel.o(i.svcRtxKernelInitialize)
-    i.svcRtxKernelLock                       0x08016a0c   Section        0  rtx_kernel.o(i.svcRtxKernelLock)
-    svcRtxKernelLock                         0x08016a0d   Thumb Code    62  rtx_kernel.o(i.svcRtxKernelLock)
-    i.svcRtxKernelStart                      0x08016a50   Section        0  rtx_kernel.o(i.svcRtxKernelStart)
-    svcRtxKernelStart                        0x08016a51   Thumb Code   194  rtx_kernel.o(i.svcRtxKernelStart)
-    i.svcRtxKernelUnlock                     0x08016b24   Section        0  rtx_kernel.o(i.svcRtxKernelUnlock)
-    svcRtxKernelUnlock                       0x08016b25   Thumb Code    62  rtx_kernel.o(i.svcRtxKernelUnlock)
-    i.svcRtxMemoryPoolAlloc                  0x08016b68   Section        0  rtx_mempool.o(i.svcRtxMemoryPoolAlloc)
-    svcRtxMemoryPoolAlloc                    0x08016b69   Thumb Code   120  rtx_mempool.o(i.svcRtxMemoryPoolAlloc)
-    i.svcRtxMemoryPoolFree                   0x08016be4   Section        0  rtx_mempool.o(i.svcRtxMemoryPoolFree)
-    svcRtxMemoryPoolFree                     0x08016be5   Thumb Code   124  rtx_mempool.o(i.svcRtxMemoryPoolFree)
-    i.svcRtxMemoryPoolNew                    0x08016c60   Section        0  rtx_mempool.o(i.svcRtxMemoryPoolNew)
-    svcRtxMemoryPoolNew                      0x08016c61   Thumb Code   372  rtx_mempool.o(i.svcRtxMemoryPoolNew)
-    i.svcRtxMessageQueueGet                  0x08016ddc   Section        0  rtx_msgqueue.o(i.svcRtxMessageQueueGet)
-    svcRtxMessageQueueGet                    0x08016ddd   Thumb Code   292  rtx_msgqueue.o(i.svcRtxMessageQueueGet)
-    i.svcRtxMessageQueueNew                  0x08016f04   Section        0  rtx_msgqueue.o(i.svcRtxMessageQueueNew)
-    svcRtxMessageQueueNew                    0x08016f05   Thumb Code   382  rtx_msgqueue.o(i.svcRtxMessageQueueNew)
-    i.svcRtxMessageQueuePut                  0x0801708c   Section        0  rtx_msgqueue.o(i.svcRtxMessageQueuePut)
-    svcRtxMessageQueuePut                    0x0801708d   Thumb Code   274  rtx_msgqueue.o(i.svcRtxMessageQueuePut)
-    i.svcRtxMutexAcquire                     0x080171a4   Section        0  rtx_mutex.o(i.svcRtxMutexAcquire)
-    svcRtxMutexAcquire                       0x080171a5   Thumb Code   196  rtx_mutex.o(i.svcRtxMutexAcquire)
-    i.svcRtxMutexDelete                      0x0801726c   Section        0  rtx_mutex.o(i.svcRtxMutexDelete)
-    svcRtxMutexDelete                        0x0801726d   Thumb Code   208  rtx_mutex.o(i.svcRtxMutexDelete)
-    i.svcRtxMutexNew                         0x08017340   Section        0  rtx_mutex.o(i.svcRtxMutexNew)
-    svcRtxMutexNew                           0x08017341   Thumb Code   128  rtx_mutex.o(i.svcRtxMutexNew)
-    i.svcRtxMutexRelease                     0x080173c4   Section        0  rtx_mutex.o(i.svcRtxMutexRelease)
-    svcRtxMutexRelease                       0x080173c5   Thumb Code   212  rtx_mutex.o(i.svcRtxMutexRelease)
-    i.svcRtxSemaphoreAcquire                 0x0801749c   Section        0  rtx_semaphore.o(i.svcRtxSemaphoreAcquire)
-    svcRtxSemaphoreAcquire                   0x0801749d   Thumb Code    88  rtx_semaphore.o(i.svcRtxSemaphoreAcquire)
-    i.svcRtxSemaphoreNew                     0x080174f8   Section        0  rtx_semaphore.o(i.svcRtxSemaphoreNew)
-    svcRtxSemaphoreNew                       0x080174f9   Thumb Code   150  rtx_semaphore.o(i.svcRtxSemaphoreNew)
-    i.svcRtxSemaphoreRelease                 0x08017598   Section        0  rtx_semaphore.o(i.svcRtxSemaphoreRelease)
-    svcRtxSemaphoreRelease                   0x08017599   Thumb Code    80  rtx_semaphore.o(i.svcRtxSemaphoreRelease)
-    i.svcRtxThreadExit                       0x080175e8   Section        0  rtx_thread.o(i.svcRtxThreadExit)
-    svcRtxThreadExit                         0x080175e9   Thumb Code    98  rtx_thread.o(i.svcRtxThreadExit)
-    i.svcRtxThreadGetId                      0x08017650   Section        0  rtx_thread.o(i.svcRtxThreadGetId)
-    svcRtxThreadGetId                        0x08017651   Thumb Code    18  rtx_thread.o(i.svcRtxThreadGetId)
-    i.svcRtxThreadNew                        0x08017664   Section        0  rtx_thread.o(i.svcRtxThreadNew)
-    svcRtxThreadNew                          0x08017665   Thumb Code   618  rtx_thread.o(i.svcRtxThreadNew)
-    i.svcRtxThreadYield                      0x080178e4   Section        0  rtx_thread.o(i.svcRtxThreadYield)
-    svcRtxThreadYield                        0x080178e5   Thumb Code    62  rtx_thread.o(i.svcRtxThreadYield)
-    i.testopen                               0x08017928   Section        0  gfile.o(i.testopen)
-    testopen                                 0x08017929   Thumb Code    80  gfile.o(i.testopen)
-    i.tune_lines                             0x08017978   Section        0  mf_wordwrap.o(i.tune_lines)
-    tune_lines                               0x08017979   Thumb Code   198  mf_wordwrap.o(i.tune_lines)
-    i.vline_clip                             0x08017a3e   Section        0  gdisp.o(i.vline_clip)
-    vline_clip                               0x08017a3f   Thumb Code   322  gdisp.o(i.vline_clip)
-    i.write_bin_codeword                     0x08017b80   Section        0  mf_rlefont.o(i.write_bin_codeword)
-    write_bin_codeword                       0x08017b81   Thumb Code    92  mf_rlefont.o(i.write_bin_codeword)
-    i.write_glyph_codeword                   0x08017bdc   Section        0  mf_rlefont.o(i.write_glyph_codeword)
-    write_glyph_codeword                     0x08017bdd   Thumb Code    56  mf_rlefont.o(i.write_glyph_codeword)
-    i.write_pixels                           0x08017c14   Section        0  mf_rlefont.o(i.write_pixels)
-    write_pixels                             0x08017c15   Thumb Code   104  mf_rlefont.o(i.write_pixels)
-    i.write_ref_codeword                     0x08017c7c   Section        0  mf_rlefont.o(i.write_ref_codeword)
-    write_ref_codeword                       0x08017c7d   Thumb Code    80  mf_rlefont.o(i.write_ref_codeword)
-    i.write_ref_dictentry                    0x08017ccc   Section        0  mf_rlefont.o(i.write_ref_dictentry)
-    write_ref_dictentry                      0x08017ccd   Thumb Code    64  mf_rlefont.o(i.write_ref_dictentry)
-    i.write_reg                              0x08017d0c   Section        0  gmouse_lld_ft5336.o(i.write_reg)
-    write_reg                                0x08017d0d   Thumb Code    22  gmouse_lld_ft5336.o(i.write_reg)
-    i.write_rle_dictentry                    0x08017d28   Section        0  mf_rlefont.o(i.write_rle_dictentry)
-    write_rle_dictentry                      0x08017d29   Thumb Code   164  mf_rlefont.o(i.write_rle_dictentry)
-    x$fpl$fpinit                             0x08017dcc   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x08017dcc   Number         0  fpinit.o(x$fpl$fpinit)
-    .constdata                               0x08017dd8   Section      732  main.o(.constdata)
-    .constdata                               0x080180b4   Section       56  gui.o(.constdata)
-    .constdata                               0x080180ec   Section        1  irq_armv7m.o(.constdata)
-    .constdata                               0x080180f0   Section      104  rtx_lib.o(.constdata)
-    os_idle_thread_attr                      0x080180f0   Data          36  rtx_lib.o(.constdata)
-    os_timer_thread_attr                     0x08018114   Data          36  rtx_lib.o(.constdata)
-    os_timer_mq_attr                         0x08018138   Data          24  rtx_lib.o(.constdata)
-    .constdata                               0x08018158   Section      204  i2c_stm32f7xx.o(.constdata)
-    DriverVersion                            0x08018158   Data           4  i2c_stm32f7xx.o(.constdata)
-    DriverCapabilities                       0x0801815c   Data           4  i2c_stm32f7xx.o(.constdata)
-    I2C3_Resources                           0x08018160   Data          52  i2c_stm32f7xx.o(.constdata)
-    i2c_spec_standard                        0x08018194   Data          32  i2c_stm32f7xx.o(.constdata)
-    i2c_spec_fast                            0x080181b4   Data          32  i2c_stm32f7xx.o(.constdata)
-    i2c_spec_fast_plus                       0x080181d4   Data          32  i2c_stm32f7xx.o(.constdata)
-    .constdata                               0x08018224   Section      248  sai_stm32f7xx.o(.constdata)
-    DriverVersion                            0x08018224   Data           4  sai_stm32f7xx.o(.constdata)
-    SAI2_sd_a                                0x08018228   Data          12  sai_stm32f7xx.o(.constdata)
-    SAI2_fs_a                                0x08018234   Data          12  sai_stm32f7xx.o(.constdata)
-    SAI2_sck_a                               0x08018240   Data          12  sai_stm32f7xx.o(.constdata)
-    SAI2_mclk_a                              0x0801824c   Data          12  sai_stm32f7xx.o(.constdata)
-    SAI2_sd_b                                0x08018258   Data          12  sai_stm32f7xx.o(.constdata)
-    SAI2_A_DMA                               0x08018264   Data          24  sai_stm32f7xx.o(.constdata)
-    SAI2_B_DMA                               0x0801827c   Data          24  sai_stm32f7xx.o(.constdata)
-    sai2_stream_a                            0x08018294   Data          32  sai_stm32f7xx.o(.constdata)
-    sai2_stream_b                            0x080182b4   Data          32  sai_stm32f7xx.o(.constdata)
-    SAI2_Resources                           0x080182d4   Data          28  sai_stm32f7xx.o(.constdata)
-    .constdata                               0x0801831c   Section       24  eventrecorder.o(.constdata)
-    __tagsym$$used                           0x0801831c   Number         0  eventrecorder.o(.constdata)
-    .constdata                               0x08018334   Section       23  retarget_io.o(.constdata)
-    .constdata                               0x0801834b   Section        8  stm32f7xx_hal_dma.o(.constdata)
-    flagBitshiftOffset                       0x0801834b   Data           8  stm32f7xx_hal_dma.o(.constdata)
-    .constdata                               0x08018353   Section       24  system_stm32f7xx.o(.constdata)
-    .constdata                               0x0801836b   Section      101  ext_led.o(.constdata)
-    cie1931                                  0x0801836b   Data         101  ext_led.o(.constdata)
-    .constdata                               0x080183d0   Section      248  gdisp_lld_stm32ltdc.o(.constdata)
-    driverCfg                                0x08018430   Data         104  gdisp_lld_stm32ltdc.o(.constdata)
-    layerOff                                 0x08018498   Data          40  gdisp_lld_stm32ltdc.o(.constdata)
-    fmt2Bpp                                  0x080184c0   Data           8  gdisp_lld_stm32ltdc.o(.constdata)
-    .constdata                               0x080184c8   Section       60  gmouse_lld_ft5336.o(.constdata)
-    .constdata                               0x08018504   Section        4  gdisp.o(.constdata)
-    dclist                                   0x08018504   Data           4  gdisp.o(.constdata)
-    .constdata                               0x08018508   Section    15440  mf_font.o(.constdata)
-    mf_rlefont_DejaVuSans12_aa_dictionary_data 0x08018508   Data         329  mf_font.o(.constdata)
-    mf_rlefont_DejaVuSans12_aa_dictionary_offsets 0x08018652   Data         244  mf_font.o(.constdata)
-    mf_rlefont_DejaVuSans12_aa_glyph_data_0  0x08018746   Data        2069  mf_font.o(.constdata)
-    mf_rlefont_DejaVuSans12_aa_glyph_offsets_0 0x08018f5c   Data         190  mf_font.o(.constdata)
-    mf_rlefont_DejaVuSans12_aa_char_ranges   0x0801901c   Data          12  mf_font.o(.constdata)
-    mf_rlefont_DejaVuSans12_aa_listentry     0x08019058   Data           8  mf_font.o(.constdata)
-    mf_rlefont_DejaVuSans16_aa_dictionary_data 0x08019060   Data         425  mf_font.o(.constdata)
-    mf_rlefont_DejaVuSans16_aa_dictionary_offsets 0x0801920a   Data         280  mf_font.o(.constdata)
-    mf_rlefont_DejaVuSans16_aa_glyph_data_0  0x08019322   Data        2853  mf_font.o(.constdata)
-    mf_rlefont_DejaVuSans16_aa_glyph_offsets_0 0x08019e48   Data         190  mf_font.o(.constdata)
-    mf_rlefont_DejaVuSans16_aa_char_ranges   0x08019f08   Data          12  mf_font.o(.constdata)
-    mf_rlefont_DejaVuSans16_aa_listentry     0x08019f44   Data           8  mf_font.o(.constdata)
-    mf_rlefont_UI2_dictionary_data           0x08019f4c   Data         159  mf_font.o(.constdata)
-    mf_rlefont_UI2_dictionary_offsets        0x08019fec   Data         124  mf_font.o(.constdata)
-    mf_rlefont_UI2_glyph_data_0              0x0801a068   Data         822  mf_font.o(.constdata)
-    mf_rlefont_UI2_glyph_offsets_0           0x0801a39e   Data         190  mf_font.o(.constdata)
-    mf_rlefont_UI2_char_ranges               0x0801a45c   Data          12  mf_font.o(.constdata)
-    mf_rlefont_UI2_Double_listentry          0x0801a4e0   Data           8  mf_font.o(.constdata)
-    mf_rlefont_UI2_Narrow_listentry          0x0801a4e8   Data           8  mf_font.o(.constdata)
-    mf_rlefont_UI2_listentry                 0x0801a4f0   Data           8  mf_font.o(.constdata)
-    mf_rlefont_arial12_dictionary_data       0x0801a4f8   Data         331  mf_font.o(.constdata)
-    mf_rlefont_arial12_dictionary_offsets    0x0801a644   Data         272  mf_font.o(.constdata)
-    mf_rlefont_arial12_glyph_data_0          0x0801a754   Data        2493  mf_font.o(.constdata)
-    mf_rlefont_arial12_glyph_offsets_0       0x0801b112   Data         190  mf_font.o(.constdata)
-    mf_rlefont_arial12_char_ranges           0x0801b1d0   Data          12  mf_font.o(.constdata)
-    mf_rlefont_arial12_listentry             0x0801b20c   Data           8  mf_font.o(.constdata)
-    mf_rlefont_arial14_dictionary_data       0x0801b214   Data         365  mf_font.o(.constdata)
-    mf_rlefont_arial14_dictionary_offsets    0x0801b382   Data         296  mf_font.o(.constdata)
-    mf_rlefont_arial14_glyph_data_0          0x0801b4aa   Data        2988  mf_font.o(.constdata)
-    mf_rlefont_arial14_glyph_offsets_0       0x0801c056   Data         190  mf_font.o(.constdata)
-    mf_rlefont_arial14_char_ranges           0x0801c114   Data          12  mf_font.o(.constdata)
-    mf_rlefont_arial14_listentry             0x0801c150   Data           8  mf_font.o(.constdata)
-    .constdata                               0x0801c158   Section    28520  gfile_fs_rom.o(.constdata)
-    token                                    0x0801c158   Data       13800  gfile_fs_rom.o(.constdata)
-    token_dir                                0x0801f740   Data          20  gfile_fs_rom.o(.constdata)
-    token_w                                  0x0801f754   Data       14620  gfile_fs_rom.o(.constdata)
-    token_w_dir                              0x08023070   Data          20  gfile_fs_rom.o(.constdata)
-    .constdata                               0x080230c0   Section       36  gwin_button.o(.constdata)
-    buttonVMT                                0x080230c0   Data          36  gwin_button.o(.constdata)
-    .constdata                               0x080230e4   Section       36  gwin_checkbox.o(.constdata)
-    checkboxVMT                              0x080230e4   Data          36  gwin_checkbox.o(.constdata)
-    .constdata                               0x08023108   Section       20  gwin_console.o(.constdata)
-    consoleVMT                               0x08023108   Data          20  gwin_console.o(.constdata)
-    .constdata                               0x0802311c   Section       60  gwin_container.o(.constdata)
-    containerVMT                             0x0802311c   Data          60  gwin_container.o(.constdata)
-    .constdata                               0x08023158   Section       20  gwin_image.o(.constdata)
-    imageVMT                                 0x08023158   Data          20  gwin_image.o(.constdata)
-    .constdata                               0x0802316c   Section       36  gwin_label.o(.constdata)
-    labelVMT                                 0x0802316c   Data          36  gwin_label.o(.constdata)
-    .constdata                               0x08023190   Section       36  gwin_radio.o(.constdata)
-    radioVMT                                 0x08023190   Data          36  gwin_radio.o(.constdata)
-    .constdata                               0x080231b4   Section       56  gwin_widget.o(.constdata)
-    .constdata                               0x080231ec   Section       40  gwin_wm.o(.constdata)
-    GNullWindowManagerVMT                    0x080231ec   Data          36  gwin_wm.o(.constdata)
-    .constdata                               0x08023214   Section       17  __printf_flags_wp.o(.constdata)
-    maptable                                 0x08023214   Data          17  __printf_flags_wp.o(.constdata)
-    .constdata                               0x08023225   Section       12  _monlen.o(.constdata)
-    .conststring                             0x08023234   Section      289  main.o(.conststring)
-    .conststring                             0x08023358   Section      183  mf_font.o(.conststring)
-    .conststring                             0x08023410   Section       24  gfile_fs_rom.o(.conststring)
-    .conststring                             0x08023428   Section        7  gwin_button.o(.conststring)
-    .conststring                             0x08023430   Section        9  gwin_checkbox.o(.conststring)
-    .conststring                             0x0802343c   Section        8  gwin_console.o(.conststring)
-    .conststring                             0x08023444   Section       10  gwin_container.o(.conststring)
-    .conststring                             0x08023450   Section        6  gwin_image.o(.conststring)
-    .conststring                             0x08023458   Section        6  gwin_label.o(.conststring)
-    .conststring                             0x08023460   Section        6  gwin_radio.o(.conststring)
-    .conststrlit                             0x08023468   Section       11  rtx_kernel.o(.conststrlit)
-    .rodata                                  0x08023474   Section      168  rtx_lib.o(.rodata)
-    __tagsym$$used                           0x08023474   Number         0  rtx_lib.o(.rodata)
-    __tagsym$$used                           0x080234e4   Number         0  rtx_lib.o(.rodata)
+    i.set_backlight                          0x080164d4   Section        0  gdisp_lld_stm32ltdc.o(i.set_backlight)
+    set_backlight                            0x080164d5   Thumb Code    32  gdisp_lld_stm32ltdc.o(i.set_backlight)
+    i.setglobalwindow                        0x080164f8   Section        0  gdisp.o(i.setglobalwindow)
+    setglobalwindow                          0x080164f9   Thumb Code    48  gdisp.o(i.setglobalwindow)
+    i.skip_pixels                            0x08016528   Section        0  mf_rlefont.o(i.skip_pixels)
+    skip_pixels                              0x08016529   Thumb Code    46  mf_rlefont.o(i.skip_pixels)
+    i.sq16                                   0x08016556   Section        0  mf_wordwrap.o(i.sq16)
+    sq16                                     0x08016557   Thumb Code     8  mf_wordwrap.o(i.sq16)
+    i.stdout_putchar                         0x0801655e   Section        0  retarget_io.o(i.stdout_putchar)
+    stdout_putchar                           0x0801655f   Thumb Code    12  retarget_io.o(i.stdout_putchar)
+    i.strip_spaces                           0x0801656a   Section        0  mf_justify.o(i.strip_spaces)
+    strip_spaces                             0x0801656b   Thumb Code    96  mf_justify.o(i.strip_spaces)
+    i.svcRtxDelay                            0x080165ca   Section        0  rtx_delay.o(i.svcRtxDelay)
+    svcRtxDelay                              0x080165cb   Thumb Code    56  rtx_delay.o(i.svcRtxDelay)
+    i.svcRtxEventFlagsClear                  0x08016602   Section        0  rtx_evflags.o(i.svcRtxEventFlagsClear)
+    svcRtxEventFlagsClear                    0x08016603   Thumb Code    68  rtx_evflags.o(i.svcRtxEventFlagsClear)
+    i.svcRtxEventFlagsNew                    0x08016648   Section        0  rtx_evflags.o(i.svcRtxEventFlagsNew)
+    svcRtxEventFlagsNew                      0x08016649   Thumb Code   156  rtx_evflags.o(i.svcRtxEventFlagsNew)
+    i.svcRtxEventFlagsSet                    0x080166ec   Section        0  rtx_evflags.o(i.svcRtxEventFlagsSet)
+    svcRtxEventFlagsSet                      0x080166ed   Thumb Code   154  rtx_evflags.o(i.svcRtxEventFlagsSet)
+    i.svcRtxEventFlagsWait                   0x08016788   Section        0  rtx_evflags.o(i.svcRtxEventFlagsWait)
+    svcRtxEventFlagsWait                     0x08016789   Thumb Code   168  rtx_evflags.o(i.svcRtxEventFlagsWait)
+    i.svcRtxKernelGetState                   0x08016834   Section        0  rtx_kernel.o(i.svcRtxKernelGetState)
+    svcRtxKernelGetState                     0x08016835   Thumb Code    20  rtx_kernel.o(i.svcRtxKernelGetState)
+    i.svcRtxKernelGetTickCount               0x0801684c   Section        0  rtx_kernel.o(i.svcRtxKernelGetTickCount)
+    svcRtxKernelGetTickCount                 0x0801684d   Thumb Code    16  rtx_kernel.o(i.svcRtxKernelGetTickCount)
+    i.svcRtxKernelGetTickFreq                0x08016860   Section        0  rtx_kernel.o(i.svcRtxKernelGetTickFreq)
+    svcRtxKernelGetTickFreq                  0x08016861   Thumb Code    16  rtx_kernel.o(i.svcRtxKernelGetTickFreq)
+    i.svcRtxKernelInitialize                 0x08016874   Section        0  rtx_kernel.o(i.svcRtxKernelInitialize)
+    svcRtxKernelInitialize                   0x08016875   Thumb Code   528  rtx_kernel.o(i.svcRtxKernelInitialize)
+    i.svcRtxKernelLock                       0x08016a8c   Section        0  rtx_kernel.o(i.svcRtxKernelLock)
+    svcRtxKernelLock                         0x08016a8d   Thumb Code    62  rtx_kernel.o(i.svcRtxKernelLock)
+    i.svcRtxKernelStart                      0x08016ad0   Section        0  rtx_kernel.o(i.svcRtxKernelStart)
+    svcRtxKernelStart                        0x08016ad1   Thumb Code   194  rtx_kernel.o(i.svcRtxKernelStart)
+    i.svcRtxKernelUnlock                     0x08016ba4   Section        0  rtx_kernel.o(i.svcRtxKernelUnlock)
+    svcRtxKernelUnlock                       0x08016ba5   Thumb Code    62  rtx_kernel.o(i.svcRtxKernelUnlock)
+    i.svcRtxMemoryPoolAlloc                  0x08016be8   Section        0  rtx_mempool.o(i.svcRtxMemoryPoolAlloc)
+    svcRtxMemoryPoolAlloc                    0x08016be9   Thumb Code   120  rtx_mempool.o(i.svcRtxMemoryPoolAlloc)
+    i.svcRtxMemoryPoolFree                   0x08016c64   Section        0  rtx_mempool.o(i.svcRtxMemoryPoolFree)
+    svcRtxMemoryPoolFree                     0x08016c65   Thumb Code   124  rtx_mempool.o(i.svcRtxMemoryPoolFree)
+    i.svcRtxMemoryPoolNew                    0x08016ce0   Section        0  rtx_mempool.o(i.svcRtxMemoryPoolNew)
+    svcRtxMemoryPoolNew                      0x08016ce1   Thumb Code   372  rtx_mempool.o(i.svcRtxMemoryPoolNew)
+    i.svcRtxMessageQueueGet                  0x08016e5c   Section        0  rtx_msgqueue.o(i.svcRtxMessageQueueGet)
+    svcRtxMessageQueueGet                    0x08016e5d   Thumb Code   292  rtx_msgqueue.o(i.svcRtxMessageQueueGet)
+    i.svcRtxMessageQueueNew                  0x08016f84   Section        0  rtx_msgqueue.o(i.svcRtxMessageQueueNew)
+    svcRtxMessageQueueNew                    0x08016f85   Thumb Code   382  rtx_msgqueue.o(i.svcRtxMessageQueueNew)
+    i.svcRtxMessageQueuePut                  0x0801710c   Section        0  rtx_msgqueue.o(i.svcRtxMessageQueuePut)
+    svcRtxMessageQueuePut                    0x0801710d   Thumb Code   274  rtx_msgqueue.o(i.svcRtxMessageQueuePut)
+    i.svcRtxMutexAcquire                     0x08017224   Section        0  rtx_mutex.o(i.svcRtxMutexAcquire)
+    svcRtxMutexAcquire                       0x08017225   Thumb Code   196  rtx_mutex.o(i.svcRtxMutexAcquire)
+    i.svcRtxMutexDelete                      0x080172ec   Section        0  rtx_mutex.o(i.svcRtxMutexDelete)
+    svcRtxMutexDelete                        0x080172ed   Thumb Code   208  rtx_mutex.o(i.svcRtxMutexDelete)
+    i.svcRtxMutexNew                         0x080173c0   Section        0  rtx_mutex.o(i.svcRtxMutexNew)
+    svcRtxMutexNew                           0x080173c1   Thumb Code   128  rtx_mutex.o(i.svcRtxMutexNew)
+    i.svcRtxMutexRelease                     0x08017444   Section        0  rtx_mutex.o(i.svcRtxMutexRelease)
+    svcRtxMutexRelease                       0x08017445   Thumb Code   212  rtx_mutex.o(i.svcRtxMutexRelease)
+    i.svcRtxSemaphoreAcquire                 0x0801751c   Section        0  rtx_semaphore.o(i.svcRtxSemaphoreAcquire)
+    svcRtxSemaphoreAcquire                   0x0801751d   Thumb Code    88  rtx_semaphore.o(i.svcRtxSemaphoreAcquire)
+    i.svcRtxSemaphoreNew                     0x08017578   Section        0  rtx_semaphore.o(i.svcRtxSemaphoreNew)
+    svcRtxSemaphoreNew                       0x08017579   Thumb Code   150  rtx_semaphore.o(i.svcRtxSemaphoreNew)
+    i.svcRtxSemaphoreRelease                 0x08017618   Section        0  rtx_semaphore.o(i.svcRtxSemaphoreRelease)
+    svcRtxSemaphoreRelease                   0x08017619   Thumb Code    80  rtx_semaphore.o(i.svcRtxSemaphoreRelease)
+    i.svcRtxThreadExit                       0x08017668   Section        0  rtx_thread.o(i.svcRtxThreadExit)
+    svcRtxThreadExit                         0x08017669   Thumb Code    98  rtx_thread.o(i.svcRtxThreadExit)
+    i.svcRtxThreadGetId                      0x080176d0   Section        0  rtx_thread.o(i.svcRtxThreadGetId)
+    svcRtxThreadGetId                        0x080176d1   Thumb Code    18  rtx_thread.o(i.svcRtxThreadGetId)
+    i.svcRtxThreadNew                        0x080176e4   Section        0  rtx_thread.o(i.svcRtxThreadNew)
+    svcRtxThreadNew                          0x080176e5   Thumb Code   618  rtx_thread.o(i.svcRtxThreadNew)
+    i.svcRtxThreadYield                      0x08017964   Section        0  rtx_thread.o(i.svcRtxThreadYield)
+    svcRtxThreadYield                        0x08017965   Thumb Code    62  rtx_thread.o(i.svcRtxThreadYield)
+    i.testopen                               0x080179a8   Section        0  gfile.o(i.testopen)
+    testopen                                 0x080179a9   Thumb Code    80  gfile.o(i.testopen)
+    i.tune_lines                             0x080179f8   Section        0  mf_wordwrap.o(i.tune_lines)
+    tune_lines                               0x080179f9   Thumb Code   198  mf_wordwrap.o(i.tune_lines)
+    i.vline_clip                             0x08017abe   Section        0  gdisp.o(i.vline_clip)
+    vline_clip                               0x08017abf   Thumb Code   322  gdisp.o(i.vline_clip)
+    i.write_bin_codeword                     0x08017c00   Section        0  mf_rlefont.o(i.write_bin_codeword)
+    write_bin_codeword                       0x08017c01   Thumb Code    92  mf_rlefont.o(i.write_bin_codeword)
+    i.write_glyph_codeword                   0x08017c5c   Section        0  mf_rlefont.o(i.write_glyph_codeword)
+    write_glyph_codeword                     0x08017c5d   Thumb Code    56  mf_rlefont.o(i.write_glyph_codeword)
+    i.write_pixels                           0x08017c94   Section        0  mf_rlefont.o(i.write_pixels)
+    write_pixels                             0x08017c95   Thumb Code   104  mf_rlefont.o(i.write_pixels)
+    i.write_ref_codeword                     0x08017cfc   Section        0  mf_rlefont.o(i.write_ref_codeword)
+    write_ref_codeword                       0x08017cfd   Thumb Code    80  mf_rlefont.o(i.write_ref_codeword)
+    i.write_ref_dictentry                    0x08017d4c   Section        0  mf_rlefont.o(i.write_ref_dictentry)
+    write_ref_dictentry                      0x08017d4d   Thumb Code    64  mf_rlefont.o(i.write_ref_dictentry)
+    i.write_reg                              0x08017d8c   Section        0  gmouse_lld_ft5336.o(i.write_reg)
+    write_reg                                0x08017d8d   Thumb Code    22  gmouse_lld_ft5336.o(i.write_reg)
+    i.write_rle_dictentry                    0x08017da8   Section        0  mf_rlefont.o(i.write_rle_dictentry)
+    write_rle_dictentry                      0x08017da9   Thumb Code   164  mf_rlefont.o(i.write_rle_dictentry)
+    x$fpl$fpinit                             0x08017e4c   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x08017e4c   Number         0  fpinit.o(x$fpl$fpinit)
+    .constdata                               0x08017e58   Section      732  main.o(.constdata)
+    .constdata                               0x08018134   Section       56  gui.o(.constdata)
+    .constdata                               0x0801816c   Section        1  irq_armv7m.o(.constdata)
+    .constdata                               0x08018170   Section      104  rtx_lib.o(.constdata)
+    os_idle_thread_attr                      0x08018170   Data          36  rtx_lib.o(.constdata)
+    os_timer_thread_attr                     0x08018194   Data          36  rtx_lib.o(.constdata)
+    os_timer_mq_attr                         0x080181b8   Data          24  rtx_lib.o(.constdata)
+    .constdata                               0x080181d8   Section      204  i2c_stm32f7xx.o(.constdata)
+    DriverVersion                            0x080181d8   Data           4  i2c_stm32f7xx.o(.constdata)
+    DriverCapabilities                       0x080181dc   Data           4  i2c_stm32f7xx.o(.constdata)
+    I2C3_Resources                           0x080181e0   Data          52  i2c_stm32f7xx.o(.constdata)
+    i2c_spec_standard                        0x08018214   Data          32  i2c_stm32f7xx.o(.constdata)
+    i2c_spec_fast                            0x08018234   Data          32  i2c_stm32f7xx.o(.constdata)
+    i2c_spec_fast_plus                       0x08018254   Data          32  i2c_stm32f7xx.o(.constdata)
+    .constdata                               0x080182a4   Section      248  sai_stm32f7xx.o(.constdata)
+    DriverVersion                            0x080182a4   Data           4  sai_stm32f7xx.o(.constdata)
+    SAI2_sd_a                                0x080182a8   Data          12  sai_stm32f7xx.o(.constdata)
+    SAI2_fs_a                                0x080182b4   Data          12  sai_stm32f7xx.o(.constdata)
+    SAI2_sck_a                               0x080182c0   Data          12  sai_stm32f7xx.o(.constdata)
+    SAI2_mclk_a                              0x080182cc   Data          12  sai_stm32f7xx.o(.constdata)
+    SAI2_sd_b                                0x080182d8   Data          12  sai_stm32f7xx.o(.constdata)
+    SAI2_A_DMA                               0x080182e4   Data          24  sai_stm32f7xx.o(.constdata)
+    SAI2_B_DMA                               0x080182fc   Data          24  sai_stm32f7xx.o(.constdata)
+    sai2_stream_a                            0x08018314   Data          32  sai_stm32f7xx.o(.constdata)
+    sai2_stream_b                            0x08018334   Data          32  sai_stm32f7xx.o(.constdata)
+    SAI2_Resources                           0x08018354   Data          28  sai_stm32f7xx.o(.constdata)
+    .constdata                               0x0801839c   Section       24  eventrecorder.o(.constdata)
+    __tagsym$$used                           0x0801839c   Number         0  eventrecorder.o(.constdata)
+    .constdata                               0x080183b4   Section       23  retarget_io.o(.constdata)
+    .constdata                               0x080183cb   Section        8  stm32f7xx_hal_dma.o(.constdata)
+    flagBitshiftOffset                       0x080183cb   Data           8  stm32f7xx_hal_dma.o(.constdata)
+    .constdata                               0x080183d3   Section       24  system_stm32f7xx.o(.constdata)
+    .constdata                               0x080183eb   Section      101  ext_led.o(.constdata)
+    cie1931                                  0x080183eb   Data         101  ext_led.o(.constdata)
+    .constdata                               0x08018450   Section      248  gdisp_lld_stm32ltdc.o(.constdata)
+    driverCfg                                0x080184b0   Data         104  gdisp_lld_stm32ltdc.o(.constdata)
+    layerOff                                 0x08018518   Data          40  gdisp_lld_stm32ltdc.o(.constdata)
+    fmt2Bpp                                  0x08018540   Data           8  gdisp_lld_stm32ltdc.o(.constdata)
+    .constdata                               0x08018548   Section       60  gmouse_lld_ft5336.o(.constdata)
+    .constdata                               0x08018584   Section        4  gdisp.o(.constdata)
+    dclist                                   0x08018584   Data           4  gdisp.o(.constdata)
+    .constdata                               0x08018588   Section    15440  mf_font.o(.constdata)
+    mf_rlefont_DejaVuSans12_aa_dictionary_data 0x08018588   Data         329  mf_font.o(.constdata)
+    mf_rlefont_DejaVuSans12_aa_dictionary_offsets 0x080186d2   Data         244  mf_font.o(.constdata)
+    mf_rlefont_DejaVuSans12_aa_glyph_data_0  0x080187c6   Data        2069  mf_font.o(.constdata)
+    mf_rlefont_DejaVuSans12_aa_glyph_offsets_0 0x08018fdc   Data         190  mf_font.o(.constdata)
+    mf_rlefont_DejaVuSans12_aa_char_ranges   0x0801909c   Data          12  mf_font.o(.constdata)
+    mf_rlefont_DejaVuSans12_aa_listentry     0x080190d8   Data           8  mf_font.o(.constdata)
+    mf_rlefont_DejaVuSans16_aa_dictionary_data 0x080190e0   Data         425  mf_font.o(.constdata)
+    mf_rlefont_DejaVuSans16_aa_dictionary_offsets 0x0801928a   Data         280  mf_font.o(.constdata)
+    mf_rlefont_DejaVuSans16_aa_glyph_data_0  0x080193a2   Data        2853  mf_font.o(.constdata)
+    mf_rlefont_DejaVuSans16_aa_glyph_offsets_0 0x08019ec8   Data         190  mf_font.o(.constdata)
+    mf_rlefont_DejaVuSans16_aa_char_ranges   0x08019f88   Data          12  mf_font.o(.constdata)
+    mf_rlefont_DejaVuSans16_aa_listentry     0x08019fc4   Data           8  mf_font.o(.constdata)
+    mf_rlefont_UI2_dictionary_data           0x08019fcc   Data         159  mf_font.o(.constdata)
+    mf_rlefont_UI2_dictionary_offsets        0x0801a06c   Data         124  mf_font.o(.constdata)
+    mf_rlefont_UI2_glyph_data_0              0x0801a0e8   Data         822  mf_font.o(.constdata)
+    mf_rlefont_UI2_glyph_offsets_0           0x0801a41e   Data         190  mf_font.o(.constdata)
+    mf_rlefont_UI2_char_ranges               0x0801a4dc   Data          12  mf_font.o(.constdata)
+    mf_rlefont_UI2_Double_listentry          0x0801a560   Data           8  mf_font.o(.constdata)
+    mf_rlefont_UI2_Narrow_listentry          0x0801a568   Data           8  mf_font.o(.constdata)
+    mf_rlefont_UI2_listentry                 0x0801a570   Data           8  mf_font.o(.constdata)
+    mf_rlefont_arial12_dictionary_data       0x0801a578   Data         331  mf_font.o(.constdata)
+    mf_rlefont_arial12_dictionary_offsets    0x0801a6c4   Data         272  mf_font.o(.constdata)
+    mf_rlefont_arial12_glyph_data_0          0x0801a7d4   Data        2493  mf_font.o(.constdata)
+    mf_rlefont_arial12_glyph_offsets_0       0x0801b192   Data         190  mf_font.o(.constdata)
+    mf_rlefont_arial12_char_ranges           0x0801b250   Data          12  mf_font.o(.constdata)
+    mf_rlefont_arial12_listentry             0x0801b28c   Data           8  mf_font.o(.constdata)
+    mf_rlefont_arial14_dictionary_data       0x0801b294   Data         365  mf_font.o(.constdata)
+    mf_rlefont_arial14_dictionary_offsets    0x0801b402   Data         296  mf_font.o(.constdata)
+    mf_rlefont_arial14_glyph_data_0          0x0801b52a   Data        2988  mf_font.o(.constdata)
+    mf_rlefont_arial14_glyph_offsets_0       0x0801c0d6   Data         190  mf_font.o(.constdata)
+    mf_rlefont_arial14_char_ranges           0x0801c194   Data          12  mf_font.o(.constdata)
+    mf_rlefont_arial14_listentry             0x0801c1d0   Data           8  mf_font.o(.constdata)
+    .constdata                               0x0801c1d8   Section    28520  gfile_fs_rom.o(.constdata)
+    token                                    0x0801c1d8   Data       13800  gfile_fs_rom.o(.constdata)
+    token_dir                                0x0801f7c0   Data          20  gfile_fs_rom.o(.constdata)
+    token_w                                  0x0801f7d4   Data       14620  gfile_fs_rom.o(.constdata)
+    token_w_dir                              0x080230f0   Data          20  gfile_fs_rom.o(.constdata)
+    .constdata                               0x08023140   Section       36  gwin_button.o(.constdata)
+    buttonVMT                                0x08023140   Data          36  gwin_button.o(.constdata)
+    .constdata                               0x08023164   Section       36  gwin_checkbox.o(.constdata)
+    checkboxVMT                              0x08023164   Data          36  gwin_checkbox.o(.constdata)
+    .constdata                               0x08023188   Section       20  gwin_console.o(.constdata)
+    consoleVMT                               0x08023188   Data          20  gwin_console.o(.constdata)
+    .constdata                               0x0802319c   Section       60  gwin_container.o(.constdata)
+    containerVMT                             0x0802319c   Data          60  gwin_container.o(.constdata)
+    .constdata                               0x080231d8   Section       20  gwin_image.o(.constdata)
+    imageVMT                                 0x080231d8   Data          20  gwin_image.o(.constdata)
+    .constdata                               0x080231ec   Section       36  gwin_label.o(.constdata)
+    labelVMT                                 0x080231ec   Data          36  gwin_label.o(.constdata)
+    .constdata                               0x08023210   Section       36  gwin_radio.o(.constdata)
+    radioVMT                                 0x08023210   Data          36  gwin_radio.o(.constdata)
+    .constdata                               0x08023234   Section       56  gwin_widget.o(.constdata)
+    .constdata                               0x0802326c   Section       40  gwin_wm.o(.constdata)
+    GNullWindowManagerVMT                    0x0802326c   Data          36  gwin_wm.o(.constdata)
+    .constdata                               0x08023294   Section       17  __printf_flags_wp.o(.constdata)
+    maptable                                 0x08023294   Data          17  __printf_flags_wp.o(.constdata)
+    .constdata                               0x080232a5   Section       12  _monlen.o(.constdata)
+    .conststring                             0x080232b4   Section      289  main.o(.conststring)
+    .conststring                             0x080233d8   Section      183  mf_font.o(.conststring)
+    .conststring                             0x08023490   Section       24  gfile_fs_rom.o(.conststring)
+    .conststring                             0x080234a8   Section        7  gwin_button.o(.conststring)
+    .conststring                             0x080234b0   Section        9  gwin_checkbox.o(.conststring)
+    .conststring                             0x080234bc   Section        8  gwin_console.o(.conststring)
+    .conststring                             0x080234c4   Section       10  gwin_container.o(.conststring)
+    .conststring                             0x080234d0   Section        6  gwin_image.o(.conststring)
+    .conststring                             0x080234d8   Section        6  gwin_label.o(.conststring)
+    .conststring                             0x080234e0   Section        6  gwin_radio.o(.conststring)
+    .conststrlit                             0x080234e8   Section       11  rtx_kernel.o(.conststrlit)
+    .rodata                                  0x080234f4   Section      168  rtx_lib.o(.rodata)
+    __tagsym$$used                           0x080234f4   Number         0  rtx_lib.o(.rodata)
+    __tagsym$$used                           0x08023564   Number         0  rtx_lib.o(.rodata)
     .bss.os                                  0x20010000   Section    100064  rtx_lib.o(.bss.os)
     os_mem                                   0x20010000   Data       100000  rtx_lib.o(.bss.os)
     os_isr_queue                             0x200286a0   Data          64  rtx_lib.o(.bss.os)
@@ -6445,65 +6447,65 @@ Image Symbol Table
     osThreadGetId                            0x08016119   Thumb Code    38  rtx_thread.o(i.osThreadGetId)
     osThreadNew                              0x08016145   Thumb Code    70  rtx_thread.o(i.osThreadNew)
     osThreadYield                            0x08016191   Thumb Code    50  rtx_thread.o(i.osThreadYield)
-    sendTestMessage                          0x08016381   Thumb Code   172  mac_sender.o(i.sendTestMessage)
-    $Super$$_fp_init                         0x08017dcd   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x08017dd5   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x08017dd5   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    queue_macR_attr                          0x08017dd8   Data          24  main.o(.constdata)
-    queue_macS_attr                          0x08017df0   Data          24  main.o(.constdata)
-    queue_phyS_attr                          0x08017e08   Data          24  main.o(.constdata)
-    queue_dbg_attr                           0x08017e20   Data          24  main.o(.constdata)
-    queue_chatR_attr                         0x08017e38   Data          24  main.o(.constdata)
-    queue_timeR_attr                         0x08017e50   Data          24  main.o(.constdata)
-    queue_timeS_attr                         0x08017e68   Data          24  main.o(.constdata)
-    queue_chatS_attr                         0x08017e80   Data          24  main.o(.constdata)
-    queue_lcd_attr                           0x08017e98   Data          24  main.o(.constdata)
-    queue_keyboard_attr                      0x08017eb0   Data          24  main.o(.constdata)
-    queue_usartR_attr                        0x08017ec8   Data          24  main.o(.constdata)
-    audio_attr                               0x08017ee0   Data          36  main.o(.constdata)
-    debug_attr                               0x08017f04   Data          36  main.o(.constdata)
-    phy_rec_attr                             0x08017f28   Data          36  main.o(.constdata)
-    phy_snd_attr                             0x08017f4c   Data          36  main.o(.constdata)
-    mac_rec_attr                             0x08017f70   Data          36  main.o(.constdata)
-    mac_snd_attr                             0x08017f94   Data          36  main.o(.constdata)
-    time_rec_attr                            0x08017fb8   Data          36  main.o(.constdata)
-    time_snd_attr                            0x08017fdc   Data          36  main.o(.constdata)
-    chat_rec_attr                            0x08018000   Data          36  main.o(.constdata)
-    chat_snd_attr                            0x08018024   Data          36  main.o(.constdata)
-    touch_attr                               0x08018048   Data          36  main.o(.constdata)
-    lcd_attr                                 0x0801806c   Data          36  main.o(.constdata)
-    tester_attr                              0x08018090   Data          36  main.o(.constdata)
-    red_green                                0x080180b4   Data          28  gui.o(.constdata)
-    white_on_gray                            0x080180d0   Data          28  gui.o(.constdata)
-    irqRtxLib                                0x080180ec   Data           1  irq_armv7m.o(.constdata)
-    irqRtxLibRef                             0x08018150   Data           4  rtx_lib.o(.constdata)
-    osRtxUserSVC                             0x08018154   Data           4  rtx_lib.o(.constdata)
-    Driver_I2C3                              0x080181f4   Data          48  i2c_stm32f7xx.o(.constdata)
-    Driver_SAI2                              0x080182f0   Data          44  sai_stm32f7xx.o(.constdata)
-    EventRecorderInfo                        0x0801831c   Data          24  eventrecorder.o(.constdata)
-    __stdin_name                             0x08018334   Data           7  retarget_io.o(.constdata)
-    __stdout_name                            0x0801833b   Data           8  retarget_io.o(.constdata)
-    __stderr_name                            0x08018343   Data           8  retarget_io.o(.constdata)
-    AHBPrescTable                            0x08018353   Data          16  system_stm32f7xx.o(.constdata)
-    APBPrescTable                            0x08018363   Data           8  system_stm32f7xx.o(.constdata)
-    GDISPVMT_STM32LTDC                       0x080183d0   Data          96  gdisp_lld_stm32ltdc.o(.constdata)
-    GMOUSEVMT_OnlyOne                        0x080184c8   Data          60  gmouse_lld_ft5336.o(.constdata)
-    mf_rlefont_DejaVuSans12_aa               0x08019028   Data          48  mf_font.o(.constdata)
-    mf_rlefont_DejaVuSans16_aa               0x08019f14   Data          48  mf_font.o(.constdata)
-    mf_rlefont_UI2                           0x0801a468   Data          48  mf_font.o(.constdata)
-    mf_rlefont_UI2_Narrow                    0x0801a498   Data          36  mf_font.o(.constdata)
-    mf_rlefont_UI2_Double                    0x0801a4bc   Data          36  mf_font.o(.constdata)
-    mf_rlefont_arial12                       0x0801b1dc   Data          48  mf_font.o(.constdata)
-    mf_rlefont_arial14                       0x0801c120   Data          48  mf_font.o(.constdata)
-    FsROMVMT                                 0x08023084   Data          60  gfile_fs_rom.o(.constdata)
-    WhiteWidgetStyle                         0x080231b4   Data          28  gwin_widget.o(.constdata)
-    BlackWidgetStyle                         0x080231d0   Data          28  gwin_widget.o(.constdata)
-    GNullWindowManager                       0x08023210   Data           4  gwin_wm.o(.constdata)
-    _monlen                                  0x08023225   Data          12  _monlen.o(.constdata)
-    osRtxConfig                              0x08023474   Data         112  rtx_lib.o(.rodata)
-    os_cb_sections                           0x080234e4   Data          56  rtx_lib.o(.rodata)
-    Region$$Table$$Base                      0x0802351c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0802353c   Number         0  anon$$obj.o(Region$$Table)
+    sendTestMessage                          0x08016381   Thumb Code   308  mac_sender.o(i.sendTestMessage)
+    $Super$$_fp_init                         0x08017e4d   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x08017e55   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x08017e55   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    queue_macR_attr                          0x08017e58   Data          24  main.o(.constdata)
+    queue_macS_attr                          0x08017e70   Data          24  main.o(.constdata)
+    queue_phyS_attr                          0x08017e88   Data          24  main.o(.constdata)
+    queue_dbg_attr                           0x08017ea0   Data          24  main.o(.constdata)
+    queue_chatR_attr                         0x08017eb8   Data          24  main.o(.constdata)
+    queue_timeR_attr                         0x08017ed0   Data          24  main.o(.constdata)
+    queue_timeS_attr                         0x08017ee8   Data          24  main.o(.constdata)
+    queue_chatS_attr                         0x08017f00   Data          24  main.o(.constdata)
+    queue_lcd_attr                           0x08017f18   Data          24  main.o(.constdata)
+    queue_keyboard_attr                      0x08017f30   Data          24  main.o(.constdata)
+    queue_usartR_attr                        0x08017f48   Data          24  main.o(.constdata)
+    audio_attr                               0x08017f60   Data          36  main.o(.constdata)
+    debug_attr                               0x08017f84   Data          36  main.o(.constdata)
+    phy_rec_attr                             0x08017fa8   Data          36  main.o(.constdata)
+    phy_snd_attr                             0x08017fcc   Data          36  main.o(.constdata)
+    mac_rec_attr                             0x08017ff0   Data          36  main.o(.constdata)
+    mac_snd_attr                             0x08018014   Data          36  main.o(.constdata)
+    time_rec_attr                            0x08018038   Data          36  main.o(.constdata)
+    time_snd_attr                            0x0801805c   Data          36  main.o(.constdata)
+    chat_rec_attr                            0x08018080   Data          36  main.o(.constdata)
+    chat_snd_attr                            0x080180a4   Data          36  main.o(.constdata)
+    touch_attr                               0x080180c8   Data          36  main.o(.constdata)
+    lcd_attr                                 0x080180ec   Data          36  main.o(.constdata)
+    tester_attr                              0x08018110   Data          36  main.o(.constdata)
+    red_green                                0x08018134   Data          28  gui.o(.constdata)
+    white_on_gray                            0x08018150   Data          28  gui.o(.constdata)
+    irqRtxLib                                0x0801816c   Data           1  irq_armv7m.o(.constdata)
+    irqRtxLibRef                             0x080181d0   Data           4  rtx_lib.o(.constdata)
+    osRtxUserSVC                             0x080181d4   Data           4  rtx_lib.o(.constdata)
+    Driver_I2C3                              0x08018274   Data          48  i2c_stm32f7xx.o(.constdata)
+    Driver_SAI2                              0x08018370   Data          44  sai_stm32f7xx.o(.constdata)
+    EventRecorderInfo                        0x0801839c   Data          24  eventrecorder.o(.constdata)
+    __stdin_name                             0x080183b4   Data           7  retarget_io.o(.constdata)
+    __stdout_name                            0x080183bb   Data           8  retarget_io.o(.constdata)
+    __stderr_name                            0x080183c3   Data           8  retarget_io.o(.constdata)
+    AHBPrescTable                            0x080183d3   Data          16  system_stm32f7xx.o(.constdata)
+    APBPrescTable                            0x080183e3   Data           8  system_stm32f7xx.o(.constdata)
+    GDISPVMT_STM32LTDC                       0x08018450   Data          96  gdisp_lld_stm32ltdc.o(.constdata)
+    GMOUSEVMT_OnlyOne                        0x08018548   Data          60  gmouse_lld_ft5336.o(.constdata)
+    mf_rlefont_DejaVuSans12_aa               0x080190a8   Data          48  mf_font.o(.constdata)
+    mf_rlefont_DejaVuSans16_aa               0x08019f94   Data          48  mf_font.o(.constdata)
+    mf_rlefont_UI2                           0x0801a4e8   Data          48  mf_font.o(.constdata)
+    mf_rlefont_UI2_Narrow                    0x0801a518   Data          36  mf_font.o(.constdata)
+    mf_rlefont_UI2_Double                    0x0801a53c   Data          36  mf_font.o(.constdata)
+    mf_rlefont_arial12                       0x0801b25c   Data          48  mf_font.o(.constdata)
+    mf_rlefont_arial14                       0x0801c1a0   Data          48  mf_font.o(.constdata)
+    FsROMVMT                                 0x08023104   Data          60  gfile_fs_rom.o(.constdata)
+    WhiteWidgetStyle                         0x08023234   Data          28  gwin_widget.o(.constdata)
+    BlackWidgetStyle                         0x08023250   Data          28  gwin_widget.o(.constdata)
+    GNullWindowManager                       0x08023290   Data           4  gwin_wm.o(.constdata)
+    _monlen                                  0x080232a5   Data          12  _monlen.o(.constdata)
+    osRtxConfig                              0x080234f4   Data         112  rtx_lib.o(.rodata)
+    os_cb_sections                           0x08023564   Data          56  rtx_lib.o(.rodata)
+    Region$$Table$$Base                      0x0802359c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080235bc   Number         0  anon$$obj.o(Region$$Table)
     .bss.os.msgqueue.cb$$Base                0x200288d4   Number         0  rtx_lib.o(.bss.os.msgqueue.cb)
     .bss.os.msgqueue.cb$$Limit               0x20028908   Number         0  rtx_lib.o(.bss.os.msgqueue.cb)
     .bss.os.thread.cb$$Base                  0x20028958   Number         0  rtx_lib.o(.bss.os.thread.cb)
@@ -6631,9 +6633,9 @@ Memory Map of the image
 
   Image Entry point : 0x080001c9
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0003c364, Max: 0x00100000, ABSOLUTE, COMPRESSED[0x000238a4])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0003c3e4, Max: 0x00100000, ABSOLUTE, COMPRESSED[0x00023924])
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0002353c, Max: 0x00100000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000235bc, Max: 0x00100000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -7458,116 +7460,116 @@ Memory Map of the image
     0x0801628a   0x0801628a   0x0000009a   Code   RO         8767    i.render_right      mf_justify.o
     0x08016324   0x08016324   0x0000005a   Code   RO         8922    i.scaled_pixel_callback  mf_scaledfont.o
     0x0801637e   0x0801637e   0x00000002   PAD
-    0x08016380   0x08016380   0x000000d4   Code   RO          582    i.sendTestMessage   mac_sender.o
-    0x08016454   0x08016454   0x00000024   Code   RO         6979    i.set_backlight     gdisp_lld_stm32ltdc.o
-    0x08016478   0x08016478   0x00000030   Code   RO         7574    i.setglobalwindow   gdisp.o
-    0x080164a8   0x080164a8   0x0000002e   Code   RO         8860    i.skip_pixels       mf_rlefont.o
-    0x080164d6   0x080164d6   0x00000008   Code   RO         8956    i.sq16              mf_wordwrap.o
-    0x080164de   0x080164de   0x0000000c   Code   RO         4352    i.stdout_putchar    retarget_io.o
-    0x080164ea   0x080164ea   0x00000060   Code   RO         8768    i.strip_spaces      mf_justify.o
-    0x0801654a   0x0801654a   0x00000038   Code   RO         1079    i.svcRtxDelay       rtx_delay.o
-    0x08016582   0x08016582   0x00000044   Code   RO         1170    i.svcRtxEventFlagsClear  rtx_evflags.o
-    0x080165c6   0x080165c6   0x00000002   PAD
-    0x080165c8   0x080165c8   0x000000a4   Code   RO         1174    i.svcRtxEventFlagsNew  rtx_evflags.o
-    0x0801666c   0x0801666c   0x0000009a   Code   RO         1175    i.svcRtxEventFlagsSet  rtx_evflags.o
-    0x08016706   0x08016706   0x00000002   PAD
-    0x08016708   0x08016708   0x000000ac   Code   RO         1176    i.svcRtxEventFlagsWait  rtx_evflags.o
-    0x080167b4   0x080167b4   0x00000018   Code   RO         2207    i.svcRtxKernelGetState  rtx_kernel.o
-    0x080167cc   0x080167cc   0x00000014   Code   RO         2210    i.svcRtxKernelGetTickCount  rtx_kernel.o
-    0x080167e0   0x080167e0   0x00000014   Code   RO         2211    i.svcRtxKernelGetTickFreq  rtx_kernel.o
-    0x080167f4   0x080167f4   0x00000218   Code   RO         2212    i.svcRtxKernelInitialize  rtx_kernel.o
-    0x08016a0c   0x08016a0c   0x00000044   Code   RO         2213    i.svcRtxKernelLock  rtx_kernel.o
-    0x08016a50   0x08016a50   0x000000d4   Code   RO         2216    i.svcRtxKernelStart  rtx_kernel.o
-    0x08016b24   0x08016b24   0x00000044   Code   RO         2218    i.svcRtxKernelUnlock  rtx_kernel.o
-    0x08016b68   0x08016b68   0x0000007c   Code   RO         2569    i.svcRtxMemoryPoolAlloc  rtx_mempool.o
-    0x08016be4   0x08016be4   0x0000007c   Code   RO         2571    i.svcRtxMemoryPoolFree  rtx_mempool.o
-    0x08016c60   0x08016c60   0x0000017c   Code   RO         2577    i.svcRtxMemoryPoolNew  rtx_mempool.o
-    0x08016ddc   0x08016ddc   0x00000128   Code   RO         2735    i.svcRtxMessageQueueGet  rtx_msgqueue.o
-    0x08016f04   0x08016f04   0x00000188   Code   RO         2741    i.svcRtxMessageQueueNew  rtx_msgqueue.o
-    0x0801708c   0x0801708c   0x00000118   Code   RO         2742    i.svcRtxMessageQueuePut  rtx_msgqueue.o
-    0x080171a4   0x080171a4   0x000000c8   Code   RO         2906    i.svcRtxMutexAcquire  rtx_mutex.o
-    0x0801726c   0x0801726c   0x000000d4   Code   RO         2907    i.svcRtxMutexDelete  rtx_mutex.o
-    0x08017340   0x08017340   0x00000084   Code   RO         2910    i.svcRtxMutexNew    rtx_mutex.o
-    0x080173c4   0x080173c4   0x000000d8   Code   RO         2911    i.svcRtxMutexRelease  rtx_mutex.o
-    0x0801749c   0x0801749c   0x0000005c   Code   RO         3020    i.svcRtxSemaphoreAcquire  rtx_semaphore.o
-    0x080174f8   0x080174f8   0x000000a0   Code   RO         3024    i.svcRtxSemaphoreNew  rtx_semaphore.o
-    0x08017598   0x08017598   0x00000050   Code   RO         3025    i.svcRtxSemaphoreRelease  rtx_semaphore.o
-    0x080175e8   0x080175e8   0x00000068   Code   RO         3235    i.svcRtxThreadExit  rtx_thread.o
-    0x08017650   0x08017650   0x00000012   Code   RO         3241    i.svcRtxThreadGetId  rtx_thread.o
-    0x08017662   0x08017662   0x00000002   PAD
-    0x08017664   0x08017664   0x00000280   Code   RO         3248    i.svcRtxThreadNew   rtx_thread.o
-    0x080178e4   0x080178e4   0x00000044   Code   RO         3253    i.svcRtxThreadYield  rtx_thread.o
-    0x08017928   0x08017928   0x00000050   Code   RO         9512    i.testopen          gfile.o
-    0x08017978   0x08017978   0x000000c6   Code   RO         8957    i.tune_lines        mf_wordwrap.o
-    0x08017a3e   0x08017a3e   0x00000142   Code   RO         7575    i.vline_clip        gdisp.o
-    0x08017b80   0x08017b80   0x0000005c   Code   RO         8861    i.write_bin_codeword  mf_rlefont.o
-    0x08017bdc   0x08017bdc   0x00000038   Code   RO         8862    i.write_glyph_codeword  mf_rlefont.o
-    0x08017c14   0x08017c14   0x00000068   Code   RO         8863    i.write_pixels      mf_rlefont.o
-    0x08017c7c   0x08017c7c   0x00000050   Code   RO         8864    i.write_ref_codeword  mf_rlefont.o
-    0x08017ccc   0x08017ccc   0x00000040   Code   RO         8865    i.write_ref_dictentry  mf_rlefont.o
-    0x08017d0c   0x08017d0c   0x0000001c   Code   RO         7109    i.write_reg         gmouse_lld_ft5336.o
-    0x08017d28   0x08017d28   0x000000a4   Code   RO         8866    i.write_rle_dictentry  mf_rlefont.o
-    0x08017dcc   0x08017dcc   0x0000000a   Code   RO        13048    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x08017dd6   0x08017dd6   0x00000002   PAD
-    0x08017dd8   0x08017dd8   0x000002dc   Data   RO           11    .constdata          main.o
-    0x080180b4   0x080180b4   0x00000038   Data   RO          924    .constdata          gui.o
-    0x080180ec   0x080180ec   0x00000001   Data   RO         1066    .constdata          irq_armv7m.o
-    0x080180ed   0x080180ed   0x00000003   PAD
-    0x080180f0   0x080180f0   0x00000068   Data   RO         2431    .constdata          rtx_lib.o
-    0x08018158   0x08018158   0x000000cc   Data   RO         3882    .constdata          i2c_stm32f7xx.o
-    0x08018224   0x08018224   0x000000f8   Data   RO         4060    .constdata          sai_stm32f7xx.o
-    0x0801831c   0x0801831c   0x00000018   Data   RO         4238    .constdata          eventrecorder.o
-    0x08018334   0x08018334   0x00000017   Data   RO         4353    .constdata          retarget_io.o
-    0x0801834b   0x0801834b   0x00000008   Data   RO         4781    .constdata          stm32f7xx_hal_dma.o
-    0x08018353   0x08018353   0x00000018   Data   RO         6434    .constdata          system_stm32f7xx.o
-    0x0801836b   0x0801836b   0x00000065   Data   RO         6557    .constdata          ext_led.o
-    0x080183d0   0x080183d0   0x000000f8   Data   RO         6980    .constdata          gdisp_lld_stm32ltdc.o
-    0x080184c8   0x080184c8   0x0000003c   Data   RO         7110    .constdata          gmouse_lld_ft5336.o
-    0x08018504   0x08018504   0x00000004   Data   RO         7576    .constdata          gdisp.o
-    0x08018508   0x08018508   0x00003c50   Data   RO         8631    .constdata          mf_font.o
-    0x0801c158   0x0801c158   0x00006f68   Data   RO         9861    .constdata          gfile_fs_rom.o
-    0x080230c0   0x080230c0   0x00000024   Data   RO        12111    .constdata          gwin_button.o
-    0x080230e4   0x080230e4   0x00000024   Data   RO        12161    .constdata          gwin_checkbox.o
-    0x08023108   0x08023108   0x00000014   Data   RO        12221    .constdata          gwin_console.o
-    0x0802311c   0x0802311c   0x0000003c   Data   RO        12287    .constdata          gwin_container.o
-    0x08023158   0x08023158   0x00000014   Data   RO        12411    .constdata          gwin_image.o
-    0x0802316c   0x0802316c   0x00000024   Data   RO        12463    .constdata          gwin_label.o
-    0x08023190   0x08023190   0x00000024   Data   RO        12531    .constdata          gwin_radio.o
-    0x080231b4   0x080231b4   0x00000038   Data   RO        12626    .constdata          gwin_widget.o
-    0x080231ec   0x080231ec   0x00000028   Data   RO        12796    .constdata          gwin_wm.o
-    0x08023214   0x08023214   0x00000011   Data   RO        13005    .constdata          c_w.l(__printf_flags_wp.o)
-    0x08023225   0x08023225   0x0000000c   Data   RO        13076    .constdata          c_w.l(_monlen.o)
-    0x08023231   0x08023231   0x00000003   PAD
-    0x08023234   0x08023234   0x00000121   Data   RO           12    .conststring        main.o
-    0x08023355   0x08023355   0x00000003   PAD
-    0x08023358   0x08023358   0x000000b7   Data   RO         8632    .conststring        mf_font.o
-    0x0802340f   0x0802340f   0x00000001   PAD
-    0x08023410   0x08023410   0x00000018   Data   RO         9862    .conststring        gfile_fs_rom.o
-    0x08023428   0x08023428   0x00000007   Data   RO        12112    .conststring        gwin_button.o
-    0x0802342f   0x0802342f   0x00000001   PAD
-    0x08023430   0x08023430   0x00000009   Data   RO        12162    .conststring        gwin_checkbox.o
-    0x08023439   0x08023439   0x00000003   PAD
-    0x0802343c   0x0802343c   0x00000008   Data   RO        12222    .conststring        gwin_console.o
-    0x08023444   0x08023444   0x0000000a   Data   RO        12288    .conststring        gwin_container.o
-    0x0802344e   0x0802344e   0x00000002   PAD
-    0x08023450   0x08023450   0x00000006   Data   RO        12412    .conststring        gwin_image.o
-    0x08023456   0x08023456   0x00000002   PAD
-    0x08023458   0x08023458   0x00000006   Data   RO        12464    .conststring        gwin_label.o
-    0x0802345e   0x0802345e   0x00000002   PAD
-    0x08023460   0x08023460   0x00000006   Data   RO        12532    .conststring        gwin_radio.o
-    0x08023466   0x08023466   0x00000002   PAD
-    0x08023468   0x08023468   0x0000000b   Data   RO         2219    .conststrlit        rtx_kernel.o
-    0x08023473   0x08023473   0x00000001   PAD
-    0x08023474   0x08023474   0x000000a8   Data   RO         2433    .rodata             rtx_lib.o
-    0x0802351c   0x0802351c   0x00000020   Data   RO        13395    Region$$Table       anon$$obj.o
+    0x08016380   0x08016380   0x00000154   Code   RO          582    i.sendTestMessage   mac_sender.o
+    0x080164d4   0x080164d4   0x00000024   Code   RO         6979    i.set_backlight     gdisp_lld_stm32ltdc.o
+    0x080164f8   0x080164f8   0x00000030   Code   RO         7574    i.setglobalwindow   gdisp.o
+    0x08016528   0x08016528   0x0000002e   Code   RO         8860    i.skip_pixels       mf_rlefont.o
+    0x08016556   0x08016556   0x00000008   Code   RO         8956    i.sq16              mf_wordwrap.o
+    0x0801655e   0x0801655e   0x0000000c   Code   RO         4352    i.stdout_putchar    retarget_io.o
+    0x0801656a   0x0801656a   0x00000060   Code   RO         8768    i.strip_spaces      mf_justify.o
+    0x080165ca   0x080165ca   0x00000038   Code   RO         1079    i.svcRtxDelay       rtx_delay.o
+    0x08016602   0x08016602   0x00000044   Code   RO         1170    i.svcRtxEventFlagsClear  rtx_evflags.o
+    0x08016646   0x08016646   0x00000002   PAD
+    0x08016648   0x08016648   0x000000a4   Code   RO         1174    i.svcRtxEventFlagsNew  rtx_evflags.o
+    0x080166ec   0x080166ec   0x0000009a   Code   RO         1175    i.svcRtxEventFlagsSet  rtx_evflags.o
+    0x08016786   0x08016786   0x00000002   PAD
+    0x08016788   0x08016788   0x000000ac   Code   RO         1176    i.svcRtxEventFlagsWait  rtx_evflags.o
+    0x08016834   0x08016834   0x00000018   Code   RO         2207    i.svcRtxKernelGetState  rtx_kernel.o
+    0x0801684c   0x0801684c   0x00000014   Code   RO         2210    i.svcRtxKernelGetTickCount  rtx_kernel.o
+    0x08016860   0x08016860   0x00000014   Code   RO         2211    i.svcRtxKernelGetTickFreq  rtx_kernel.o
+    0x08016874   0x08016874   0x00000218   Code   RO         2212    i.svcRtxKernelInitialize  rtx_kernel.o
+    0x08016a8c   0x08016a8c   0x00000044   Code   RO         2213    i.svcRtxKernelLock  rtx_kernel.o
+    0x08016ad0   0x08016ad0   0x000000d4   Code   RO         2216    i.svcRtxKernelStart  rtx_kernel.o
+    0x08016ba4   0x08016ba4   0x00000044   Code   RO         2218    i.svcRtxKernelUnlock  rtx_kernel.o
+    0x08016be8   0x08016be8   0x0000007c   Code   RO         2569    i.svcRtxMemoryPoolAlloc  rtx_mempool.o
+    0x08016c64   0x08016c64   0x0000007c   Code   RO         2571    i.svcRtxMemoryPoolFree  rtx_mempool.o
+    0x08016ce0   0x08016ce0   0x0000017c   Code   RO         2577    i.svcRtxMemoryPoolNew  rtx_mempool.o
+    0x08016e5c   0x08016e5c   0x00000128   Code   RO         2735    i.svcRtxMessageQueueGet  rtx_msgqueue.o
+    0x08016f84   0x08016f84   0x00000188   Code   RO         2741    i.svcRtxMessageQueueNew  rtx_msgqueue.o
+    0x0801710c   0x0801710c   0x00000118   Code   RO         2742    i.svcRtxMessageQueuePut  rtx_msgqueue.o
+    0x08017224   0x08017224   0x000000c8   Code   RO         2906    i.svcRtxMutexAcquire  rtx_mutex.o
+    0x080172ec   0x080172ec   0x000000d4   Code   RO         2907    i.svcRtxMutexDelete  rtx_mutex.o
+    0x080173c0   0x080173c0   0x00000084   Code   RO         2910    i.svcRtxMutexNew    rtx_mutex.o
+    0x08017444   0x08017444   0x000000d8   Code   RO         2911    i.svcRtxMutexRelease  rtx_mutex.o
+    0x0801751c   0x0801751c   0x0000005c   Code   RO         3020    i.svcRtxSemaphoreAcquire  rtx_semaphore.o
+    0x08017578   0x08017578   0x000000a0   Code   RO         3024    i.svcRtxSemaphoreNew  rtx_semaphore.o
+    0x08017618   0x08017618   0x00000050   Code   RO         3025    i.svcRtxSemaphoreRelease  rtx_semaphore.o
+    0x08017668   0x08017668   0x00000068   Code   RO         3235    i.svcRtxThreadExit  rtx_thread.o
+    0x080176d0   0x080176d0   0x00000012   Code   RO         3241    i.svcRtxThreadGetId  rtx_thread.o
+    0x080176e2   0x080176e2   0x00000002   PAD
+    0x080176e4   0x080176e4   0x00000280   Code   RO         3248    i.svcRtxThreadNew   rtx_thread.o
+    0x08017964   0x08017964   0x00000044   Code   RO         3253    i.svcRtxThreadYield  rtx_thread.o
+    0x080179a8   0x080179a8   0x00000050   Code   RO         9512    i.testopen          gfile.o
+    0x080179f8   0x080179f8   0x000000c6   Code   RO         8957    i.tune_lines        mf_wordwrap.o
+    0x08017abe   0x08017abe   0x00000142   Code   RO         7575    i.vline_clip        gdisp.o
+    0x08017c00   0x08017c00   0x0000005c   Code   RO         8861    i.write_bin_codeword  mf_rlefont.o
+    0x08017c5c   0x08017c5c   0x00000038   Code   RO         8862    i.write_glyph_codeword  mf_rlefont.o
+    0x08017c94   0x08017c94   0x00000068   Code   RO         8863    i.write_pixels      mf_rlefont.o
+    0x08017cfc   0x08017cfc   0x00000050   Code   RO         8864    i.write_ref_codeword  mf_rlefont.o
+    0x08017d4c   0x08017d4c   0x00000040   Code   RO         8865    i.write_ref_dictentry  mf_rlefont.o
+    0x08017d8c   0x08017d8c   0x0000001c   Code   RO         7109    i.write_reg         gmouse_lld_ft5336.o
+    0x08017da8   0x08017da8   0x000000a4   Code   RO         8866    i.write_rle_dictentry  mf_rlefont.o
+    0x08017e4c   0x08017e4c   0x0000000a   Code   RO        13048    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x08017e56   0x08017e56   0x00000002   PAD
+    0x08017e58   0x08017e58   0x000002dc   Data   RO           11    .constdata          main.o
+    0x08018134   0x08018134   0x00000038   Data   RO          924    .constdata          gui.o
+    0x0801816c   0x0801816c   0x00000001   Data   RO         1066    .constdata          irq_armv7m.o
+    0x0801816d   0x0801816d   0x00000003   PAD
+    0x08018170   0x08018170   0x00000068   Data   RO         2431    .constdata          rtx_lib.o
+    0x080181d8   0x080181d8   0x000000cc   Data   RO         3882    .constdata          i2c_stm32f7xx.o
+    0x080182a4   0x080182a4   0x000000f8   Data   RO         4060    .constdata          sai_stm32f7xx.o
+    0x0801839c   0x0801839c   0x00000018   Data   RO         4238    .constdata          eventrecorder.o
+    0x080183b4   0x080183b4   0x00000017   Data   RO         4353    .constdata          retarget_io.o
+    0x080183cb   0x080183cb   0x00000008   Data   RO         4781    .constdata          stm32f7xx_hal_dma.o
+    0x080183d3   0x080183d3   0x00000018   Data   RO         6434    .constdata          system_stm32f7xx.o
+    0x080183eb   0x080183eb   0x00000065   Data   RO         6557    .constdata          ext_led.o
+    0x08018450   0x08018450   0x000000f8   Data   RO         6980    .constdata          gdisp_lld_stm32ltdc.o
+    0x08018548   0x08018548   0x0000003c   Data   RO         7110    .constdata          gmouse_lld_ft5336.o
+    0x08018584   0x08018584   0x00000004   Data   RO         7576    .constdata          gdisp.o
+    0x08018588   0x08018588   0x00003c50   Data   RO         8631    .constdata          mf_font.o
+    0x0801c1d8   0x0801c1d8   0x00006f68   Data   RO         9861    .constdata          gfile_fs_rom.o
+    0x08023140   0x08023140   0x00000024   Data   RO        12111    .constdata          gwin_button.o
+    0x08023164   0x08023164   0x00000024   Data   RO        12161    .constdata          gwin_checkbox.o
+    0x08023188   0x08023188   0x00000014   Data   RO        12221    .constdata          gwin_console.o
+    0x0802319c   0x0802319c   0x0000003c   Data   RO        12287    .constdata          gwin_container.o
+    0x080231d8   0x080231d8   0x00000014   Data   RO        12411    .constdata          gwin_image.o
+    0x080231ec   0x080231ec   0x00000024   Data   RO        12463    .constdata          gwin_label.o
+    0x08023210   0x08023210   0x00000024   Data   RO        12531    .constdata          gwin_radio.o
+    0x08023234   0x08023234   0x00000038   Data   RO        12626    .constdata          gwin_widget.o
+    0x0802326c   0x0802326c   0x00000028   Data   RO        12796    .constdata          gwin_wm.o
+    0x08023294   0x08023294   0x00000011   Data   RO        13005    .constdata          c_w.l(__printf_flags_wp.o)
+    0x080232a5   0x080232a5   0x0000000c   Data   RO        13076    .constdata          c_w.l(_monlen.o)
+    0x080232b1   0x080232b1   0x00000003   PAD
+    0x080232b4   0x080232b4   0x00000121   Data   RO           12    .conststring        main.o
+    0x080233d5   0x080233d5   0x00000003   PAD
+    0x080233d8   0x080233d8   0x000000b7   Data   RO         8632    .conststring        mf_font.o
+    0x0802348f   0x0802348f   0x00000001   PAD
+    0x08023490   0x08023490   0x00000018   Data   RO         9862    .conststring        gfile_fs_rom.o
+    0x080234a8   0x080234a8   0x00000007   Data   RO        12112    .conststring        gwin_button.o
+    0x080234af   0x080234af   0x00000001   PAD
+    0x080234b0   0x080234b0   0x00000009   Data   RO        12162    .conststring        gwin_checkbox.o
+    0x080234b9   0x080234b9   0x00000003   PAD
+    0x080234bc   0x080234bc   0x00000008   Data   RO        12222    .conststring        gwin_console.o
+    0x080234c4   0x080234c4   0x0000000a   Data   RO        12288    .conststring        gwin_container.o
+    0x080234ce   0x080234ce   0x00000002   PAD
+    0x080234d0   0x080234d0   0x00000006   Data   RO        12412    .conststring        gwin_image.o
+    0x080234d6   0x080234d6   0x00000002   PAD
+    0x080234d8   0x080234d8   0x00000006   Data   RO        12464    .conststring        gwin_label.o
+    0x080234de   0x080234de   0x00000002   PAD
+    0x080234e0   0x080234e0   0x00000006   Data   RO        12532    .conststring        gwin_radio.o
+    0x080234e6   0x080234e6   0x00000002   PAD
+    0x080234e8   0x080234e8   0x0000000b   Data   RO         2219    .conststrlit        rtx_kernel.o
+    0x080234f3   0x080234f3   0x00000001   PAD
+    0x080234f4   0x080234f4   0x000000a8   Data   RO         2433    .rodata             rtx_lib.o
+    0x0802359c   0x0802359c   0x00000020   Data   RO        13395    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM2 (Exec base: 0x20000000, Load base: 0x080238a4, Size: 0x00000000, Max: 0x00010000, ABSOLUTE)
+    Execution Region RW_IRAM2 (Exec base: 0x20000000, Load base: 0x08023924, Size: 0x00000000, Max: 0x00010000, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20010000, Load base: 0x0802353c, Size: 0x0002c8a8, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x00000368])
+    Execution Region RW_IRAM1 (Exec base: 0x20010000, Load base: 0x080235bc, Size: 0x0002c8a8, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x00000368])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -7692,7 +7694,7 @@ Image component sizes
        200         14          1          0          0        644   irq_armv7m.o
       1796        320          0          0         48       3871   lcd.o
          2          0          0          0          0        490   mac_receiver.o
-       216         40          0          0          0       1786   mac_sender.o
+       344         42          0          0          0       1982   mac_sender.o
       1180        324       1021        100         40     828976   main.o
          0          0          0          0          0       1236   mf_bwfont.o
        174          0          0          0          0       1885   mf_encoding.o
@@ -7740,7 +7742,7 @@ Image component sizes
        388         60          0          0          0       2703   touch.o
 
     ----------------------------------------------------------------------
-     91538       5966      47372     101912      80060    1775236   Object Totals
+     91666       5968      47372     101912      80060    1775432   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         96          0         20         23          4          0   (incl. Padding)
 
@@ -7851,15 +7853,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     97296       6210      47404     101928      80512    1708540   Grand Totals
-     97296       6210      47404        872      80512    1708540   ELF Image Totals (compressed)
-     97296       6210      47404        872          0          0   ROM Totals
+     97424       6212      47404     101928      80512    1708736   Grand Totals
+     97424       6212      47404        872      80512    1708736   ELF Image Totals (compressed)
+     97424       6212      47404        872          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)               144700 ( 141.31kB)
+    Total RO  Size (Code + RO Data)               144828 ( 141.43kB)
     Total RW  Size (RW Data + ZI Data)            182440 ( 178.16kB)
-    Total ROM Size (Code + RO Data + RW Data)     145572 ( 142.16kB)
+    Total ROM Size (Code + RO Data + RW Data)     145700 ( 142.29kB)
 
 ==============================================================================
 
