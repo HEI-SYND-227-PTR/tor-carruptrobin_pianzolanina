@@ -28,26 +28,23 @@ void sendTestMessage()
 				break;
 			case DATABACK:
 				{
-					uint8_t* msg = osMemoryPoolAlloc(memPool,osWaitForever);
-					msg[0] = (queueMsg.addr << 3) + queueMsg.sapi;
-					msg[1] = *(queueMsg.anyPtr+1);
-					size_t length = strlen(queueMsg.anyPtr);
-					msg[2] = length;
-					memcpy(&msg[3],queueMsg.anyPtr,length);
-					uint8_t crc = msg[0] + msg[1] + msg[2];
-					for(uint8_t i = 0; i<length; i++){
-						crc = crc + msg[3 + i];
-					}
-					bool read  = true;
-					bool ack = false;
-					if(((*(queueMsg.anyPtr+1) >> 3 == 0xFF) || (crc == *(queueMsg.anyPtr+length) >> 2)){
-						ack = true;
-					}
-					uint8_t status = (crc << 2) + (read << 1) + ack;
-					msg[3 + length] = status;
+					uint8_t* dataPtr = (uint8_t*)queueMsg.anyPtr;
+				  bool read  = (dataPtr[3 + dataPtr[2]] & 2) >> 1;
+					bool ack = (dataPtr[3 + dataPtr[2]] & 1);
 					
-					queueMsg.type = TO_PHY;
-					queueMsg.anyPtr = msg;
+					if(read == 1 && ack == 1)// Message has made a full circle and is okay
+					{
+							retCode = osMemoryPoolFree(memPool,dataPtr);
+							CheckRetCode(retCode,__LINE__,__FILE__,CONTINUE);
+					}
+					else
+					{
+							read = 0;
+							ack = 0;
+							dataPtr[3 + dataPtr[2]] = dataPtr[3 + dataPtr[2]] & (ack + (read << 1));
+							queueMsg.type = TO_PHY;
+							queueMsg.anyPtr = dataPtr;
+					}
 				}
 				break;
 			case NEW_TOKEN:
