@@ -22,8 +22,30 @@ void sendTestMessage()
 		switch(queueMsg.type)
 		{
 			case TOKEN:
+			{
+				
+			}
 				break;
 			case DATABACK:
+				{
+					uint8_t* dataPtr = (uint8_t*)queueMsg.anyPtr;
+				  bool read  = (dataPtr[3 + dataPtr[2]] & 2) >> 1;
+					bool ack = (dataPtr[3 + dataPtr[2]] & 1);
+					
+					if(read == 1 && ack == 1)// Message has made a full circle and is okay
+					{
+							retCode = osMemoryPoolFree(memPool,dataPtr);
+							CheckRetCode(retCode,__LINE__,__FILE__,CONTINUE);
+					}
+					else
+					{
+							read = 0;
+							ack = 0;
+							dataPtr[3 + dataPtr[2]] = dataPtr[3 + dataPtr[2]] & (ack + (read << 1));
+							queueMsg.type = TO_PHY;
+							queueMsg.anyPtr = dataPtr;
+					}
+				}
 				break;
 			case NEW_TOKEN:
 			{
