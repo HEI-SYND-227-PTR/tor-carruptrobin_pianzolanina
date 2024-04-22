@@ -19,7 +19,7 @@ void MacReceiver(void *argument)
 
 		if(queueMsg.type == FROM_PHY)
 		{
-			if(queueMsg.anyPtr[0] == TOKEN_TAG)
+			if(dataPtr[0] == TOKEN_TAG)
 			{
 				queueMsg.type = TOKEN;
 				retCode = osMessageQueuePut(
@@ -66,7 +66,7 @@ void MacReceiver(void *argument)
 					dataPtr[3 + dataPtr[2]] = dataPtr[3 + dataPtr[2]] & (ack + (read << 1));
 
 					uint8_t *msg = osMemoryPoolAlloc(memPool, osWaitForever);
-					strcpy(msg,dataPtr[3]);
+					strcpy(msg,&dataPtr[3]);
 
 					queueMsg.type = TO_PHY;
 					retCode = osMessageQueuePut(

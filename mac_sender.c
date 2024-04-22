@@ -26,7 +26,25 @@ void MacSender(void *argument)
 			osWaitForever);
 		CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 
-		if (queueMsg.type == DATABACK && iHavetheToken == true) // Todo next
+		if(queueMsg.type == NEW_TOKEN)
+		{
+				uint8_t *msg = osMemoryPoolAlloc(memPool, osWaitForever);
+				msg[0] = TOKEN_TAG;
+				for (uint8_t i = 0; i < 15; i++)
+				{
+					msg[1 + i] = gTokenInterface.station_list[i];
+				}
+				msg[16] = 0;
+				queueMsg.type = NEW_TOKEN;
+				queueMsg.anyPtr = msg;			
+				retCode = osMessageQueuePut(
+					queue_phyS_id,
+					&queueMsg,
+					osPriorityNormal,
+					osWaitForever);
+				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
+		}
+		else if (queueMsg.type == DATABACK && iHavetheToken == true) // Todo next
 		{
 			uint8_t *dataPtr = (uint8_t *)queueMsg.anyPtr;
 			bool read = (dataPtr[3 + dataPtr[2]] & 2) >> 1;
@@ -70,19 +88,38 @@ void MacSender(void *argument)
 					queueMsg.anyPtr = dataPtr;
 				}
 			}
+			retCode = osMessageQueuePut(
+				queue_phyS_id,
+				&queueMsg,
+				osPriorityNormal,
+				osWaitForever);
+			CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 		}
 		else if (queueMsg.type == TOKEN)
 		{
 			iHavetheToken = true;
 			tokenMsg = queueMsg;
-
-			queueMsg.type = TOKEN_LIST;
-			retCode = osMessageQueuePut(
-				queue_lcd_id,
-				&queueMsg,
-				osPriorityNormal,
-				osWaitForever);
-			CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);			
+			uint8_t *dataPtr = (uint8_t *)queueMsg.anyPtr;
+			bool stationHasChanged = false;
+			for(uint8_t i=0; i<15;i++)
+			{
+				if(gTokenInterface.station_list[i] != dataPtr[i + 1])
+				{
+					gTokenInterface.station_list[i] = dataPtr[i + 1];
+					stationHasChanged = true;
+				}
+			}
+			if(stationHasChanged)
+			{
+				queueMsg.type = TOKEN_LIST;
+				retCode = osMessageQueuePut(
+					queue_lcd_id,
+					&queueMsg,
+					osPriorityNormal,
+					osWaitForever);
+				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);	
+			}
+		
 
 			if (osMessageQueueGetCount(queue_messBuff_id) != 0)
 			{
@@ -95,24 +132,10 @@ void MacSender(void *argument)
 
 				switch (queueMsg.type)
 				{
-				case NEW_TOKEN:
-				{
-					uint8_t *msg = osMemoryPoolAlloc(memPool, osWaitForever);
-					msg[0] = TOKEN_TAG;
-					for (uint8_t i = 0; i < 15; i++)
-					{
-						msg[1 + i] = gTokenInterface.station_list[i];
-					}
-					msg[16] = 0;
-					queueMsg.type = NEW_TOKEN;
-					queueMsg.anyPtr = msg;
-				}
-				break;
 				case START:
 				{
 					gTokenInterface.connected = true;
 					queueMsg = tokenMsg;
-					uint8_t *dataPtr = (uint8_t *)queueMsg.anyPtr;
 					dataPtr[gTokenInterface.myAddress + 1] = dataPtr[gTokenInterface.myAddress + 1] | ((1 << CHAT_SAPI) + (1 << TIME_SAPI));
 					queueMsg.type = TO_PHY;
 					iHavetheToken = false;
@@ -122,7 +145,6 @@ void MacSender(void *argument)
 				{
 					gTokenInterface.connected = false;
 					queueMsg = tokenMsg;
-					uint8_t *dataPtr = (uint8_t *)queueMsg.anyPtr;
 					dataPtr[gTokenInterface.myAddress + 1] = dataPtr[gTokenInterface.myAddress + 1] | ((0 << CHAT_SAPI) + (1 << TIME_SAPI));
 					queueMsg.type = TO_PHY;
 					iHavetheToken = false;
