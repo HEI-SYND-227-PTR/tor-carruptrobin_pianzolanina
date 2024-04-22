@@ -191,7 +191,7 @@
           <Type>0</Type>
           <LineNumber>62</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134265482</Address>
+          <Address>134265574</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -207,7 +207,7 @@
           <Type>0</Type>
           <LineNumber>59</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134265460</Address>
+          <Address>134265552</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -271,7 +271,7 @@
           <Type>0</Type>
           <LineNumber>45</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134265422</Address>
+          <Address>134265514</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -299,11 +299,26 @@
           <WinNumber>1</WinNumber>
           <ItemText>queueMsg</ItemText>
         </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>srcSapi</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>(dataPtr[3 + dataPtr[2]] &gt;&gt; 2)</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>dataPtr[3 + dataPtr[2]]</ItemText>
+        </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
-          <SubType>0</SubType>
+          <SubType>8</SubType>
           <ItemText>queueMsg.anyPtr</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>

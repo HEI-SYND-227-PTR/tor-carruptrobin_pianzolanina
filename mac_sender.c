@@ -153,8 +153,8 @@ void MacSender(void *argument)
 				case DATA_IND:
 				{
 					uint8_t *msg = osMemoryPoolAlloc(memPool, osWaitForever);
-					msg[0] = gTokenInterface.myAddress << 3 + queueMsg.sapi; // Control 1
-					msg[1] = queueMsg.addr << 3 + queueMsg.sapi;
+					msg[0] = (gTokenInterface.myAddress << 3) + queueMsg.sapi; // Control 1
+					msg[1] = (queueMsg.addr << 3) + queueMsg.sapi;
 					size_t length = strlen(queueMsg.anyPtr);
 					msg[2] = length;
 					memcpy(&msg[3], queueMsg.anyPtr, length);

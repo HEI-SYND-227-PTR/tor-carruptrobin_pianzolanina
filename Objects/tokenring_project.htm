@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\tokenring_project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\tokenring_project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Apr 22 15:09:42 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Apr 22 16:10:21 2024
 <BR><P>
 <H3>Maximum Stack Usage =        576 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1167,12 +1167,11 @@ Global Symbols
 <LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DebugFrame
 </UL>
 
-<P><STRONG><a name="[265]"></a>strcpy</STRONG> (Thumb, 72 bytes, Stack size 12 bytes, strcpy.o(.text))
+<P><STRONG><a name="[266]"></a>strcpy</STRONG> (Thumb, 72 bytes, Stack size 12 bytes, strcpy.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = strcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[260]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gwinSetText
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MacSender
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MacReceiver
 </UL>
 
 <P><STRONG><a name="[190]"></a>strlen</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, strlen.o(.text))
@@ -1196,6 +1195,7 @@ Global Symbols
 <LI><a href="#[33a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isrRtxMessageQueueGet
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PhReceiver
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MacSender
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MacReceiver
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DebugStation
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChatSender
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ROMRead
@@ -1837,8 +1837,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_EXTI_IRQHandler
-<LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Receive
 <LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ScanCodeAnalyse
+<LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Receive
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f746xx.o(RESET)
 </UL>
@@ -2404,7 +2404,7 @@ Global Symbols
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;svcRtxMessageQueueGet
 <LI><a href="#[33b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isrRtxMessageQueuePut
 <LI><a href="#[33a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isrRtxMessageQueueGet
-<LI><a href="#[266]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueNew
+<LI><a href="#[265]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueNew
 </UL>
 
 <P><STRONG><a name="[1e6]"></a>EvrRtxMessageQueueGet</STRONG> (Thumb, 26 bytes, Stack size 24 bytes, rtx_evr.o(i.EvrRtxMessageQueueGet))
@@ -2463,7 +2463,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EventRecord4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[266]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueNew
+<BR>[Called By]<UL><LI><a href="#[265]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueNew
 </UL>
 
 <P><STRONG><a name="[1ed]"></a>EvrRtxMessageQueueNotInserted</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, rtx_evr.o(i.EvrRtxMessageQueueNotInserted))
@@ -2812,12 +2812,12 @@ Global Symbols
 <LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort
 <LI><a href="#[246]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_MasterTransmit
 <LI><a href="#[245]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_MasterReceive
+<LI><a href="#[293]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
+<LI><a href="#[23a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_CheckIdleState
 <LI><a href="#[22e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
 <LI><a href="#[19a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_Receive
 <LI><a href="#[22f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitFlagStateUntilTimeout
 <LI><a href="#[283]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitFifoStateUntilTimeout
-<LI><a href="#[293]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
-<LI><a href="#[23a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_CheckIdleState
 </UL>
 
 <P><STRONG><a name="[220]"></a>HAL_InitTick</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, stm32f7xx_hal.o(i.HAL_InitTick))
@@ -2979,17 +2979,17 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[235]"></a>HAL_UART_ErrorCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f7xx_hal_uart.o(i.HAL_UART_ErrorCallback))
-<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_DMAAbortOnError
-<LI><a href="#[232]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<BR><BR>[Called By]<UL><LI><a href="#[232]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_DMAAbortOnError
 </UL>
 
 <P><STRONG><a name="[232]"></a>HAL_UART_IRQHandler</STRONG> (Thumb, 366 bytes, Stack size 32 bytes, stm32f7xx_hal_uart.o(i.HAL_UART_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = HAL_UART_IRQHandler &rArr; UART_EndTransmit_IT &rArr; HAL_UART_TxCpltCallback &rArr; osEventFlagsSet &rArr; osRtxPostProcess &rArr; osRtxKernelErrorNotify &rArr; EvrRtxKernelErrorNotify &rArr; EventRecord2 &rArr; EventRecordItem
 </UL>
 <BR>[Calls]<UL><LI><a href="#[234]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort_IT
+<LI><a href="#[235]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
 <LI><a href="#[236]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndTransmit_IT
 <LI><a href="#[233]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
-<LI><a href="#[235]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
 </UL>
 <BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART6_IRQHandler
 </UL>
@@ -3085,7 +3085,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.main)
 </UL>
-<P><STRONG><a name="[94]"></a>MacReceiver</STRONG> (Thumb, 406 bytes, Stack size 24 bytes, mac_receiver.o(i.MacReceiver))
+<P><STRONG><a name="[94]"></a>MacReceiver</STRONG> (Thumb, 472 bytes, Stack size 24 bytes, mac_receiver.o(i.MacReceiver))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216 + Unknown Stack Size
 <LI>Call Chain = MacReceiver &rArr; CheckRetCode &rArr; __2printf &rArr; _printf_char_file &rArr; _mutex_release &rArr; os_kernel_is_active &rArr; osKernelGetState &rArr; svcRtxKernelGetState &rArr; EvrRtxKernelGetState &rArr; EventRecord2 &rArr; EventRecordItem
 </UL>
@@ -3093,11 +3093,11 @@ Global Symbols
 <LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
 <LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CheckRetCode
-<LI><a href="#[265]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
+<LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.main)
 </UL>
-<P><STRONG><a name="[95]"></a>MacSender</STRONG> (Thumb, 902 bytes, Stack size 40 bytes, mac_sender.o(i.MacSender))
+<P><STRONG><a name="[95]"></a>MacSender</STRONG> (Thumb, 898 bytes, Stack size 40 bytes, mac_sender.o(i.MacSender))
 <BR><BR>[Stack]<UL><LI>Max Depth = 232 + Unknown Stack Size
 <LI>Call Chain = MacSender &rArr; CheckRetCode &rArr; __2printf &rArr; _printf_char_file &rArr; _mutex_release &rArr; os_kernel_is_active &rArr; osKernelGetState &rArr; svcRtxKernelGetState &rArr; EvrRtxKernelGetState &rArr; EventRecord2 &rArr; EventRecordItem
 </UL>
@@ -3106,11 +3106,11 @@ Global Symbols
 <LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
 <LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
 <LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMemoryPoolFree
-<LI><a href="#[266]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueNew
+<LI><a href="#[265]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueNew
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CheckRetCode
 <LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
-<LI><a href="#[265]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
+<LI><a href="#[266]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.main)
 </UL>
@@ -4714,7 +4714,7 @@ Global Symbols
 <LI><a href="#[2d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gfxAlloc
 <LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_gwinUpdate
 <LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
-<LI><a href="#[265]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
+<LI><a href="#[266]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD
 </UL>
@@ -4778,7 +4778,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 360<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCCEx_PeriphCLKConfig &rArr; HAL_GetTick &rArr; osKernelGetTickCount &rArr; svcRtxKernelGetTickCount &rArr; EvrRtxKernelGetTickCount &rArr; EventRecord2 &rArr; EventRecordItem
 </UL>
 <BR>[Calls]<UL><LI><a href="#[323]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osThreadNew
-<LI><a href="#[266]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueNew
+<LI><a href="#[265]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueNew
 <LI><a href="#[343]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMemoryPoolNew
 <LI><a href="#[345]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelStart
 <LI><a href="#[2df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelInitialize
@@ -5135,7 +5135,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MacSender
 </UL>
 
-<P><STRONG><a name="[266]"></a>osMessageQueueNew</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, rtx_msgqueue.o(i.osMessageQueueNew))
+<P><STRONG><a name="[265]"></a>osMessageQueueNew</STRONG> (Thumb, 70 bytes, Stack size 24 bytes, rtx_msgqueue.o(i.osMessageQueueNew))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = osMessageQueueNew &rArr; EvrRtxMessageQueueNew &rArr; EventRecord4 &rArr; EventRecordItem
 </UL>
 <BR>[Calls]<UL><LI><a href="#[35e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsIrqMasked
@@ -5179,6 +5179,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_mutex_acquire
 <LI><a href="#[258]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGClear
 <LI><a href="#[254]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGFillArea
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_gdispInitDriver
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_gdispDeInitDriver
 <LI><a href="#[2bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGSetClip
 <LI><a href="#[2bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGFlush
 <LI><a href="#[300]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGFillStringBox
@@ -5191,8 +5193,6 @@ Global Symbols
 <LI><a href="#[2f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGDrawBox
 <LI><a href="#[2bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGControl
 <LI><a href="#[2f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGBlitArea
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_gdispInitDriver
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_gdispDeInitDriver
 <LI><a href="#[289]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;geventSendEvent
 <LI><a href="#[2cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;geventRegisterCallback
 <LI><a href="#[215]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;geventGetSourceListener
@@ -5233,6 +5233,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_mutex_release
 <LI><a href="#[258]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGClear
 <LI><a href="#[254]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGFillArea
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_gdispInitDriver
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_gdispDeInitDriver
 <LI><a href="#[2bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGSetClip
 <LI><a href="#[2bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGFlush
 <LI><a href="#[300]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGFillStringBox
@@ -5245,8 +5247,6 @@ Global Symbols
 <LI><a href="#[2f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGDrawBox
 <LI><a href="#[2bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGControl
 <LI><a href="#[2f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gdispGBlitArea
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_gdispInitDriver
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_gdispDeInitDriver
 <LI><a href="#[289]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;geventSendEvent
 <LI><a href="#[2cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;geventRegisterCallback
 <LI><a href="#[215]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;geventGetSourceListener
@@ -6109,14 +6109,14 @@ Local Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[267]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGetCount
 <LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
 <LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
-<LI><a href="#[266]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueNew
+<LI><a href="#[265]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueNew
 </UL>
 
 <P><STRONG><a name="[35e]"></a>IsIrqMasked</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, rtx_msgqueue.o(i.IsIrqMasked))
 <BR><BR>[Called By]<UL><LI><a href="#[267]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGetCount
 <LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
 <LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
-<LI><a href="#[266]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueNew
+<LI><a href="#[265]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueNew
 </UL>
 
 <P><STRONG><a name="[268]"></a>MessageQueueGet</STRONG> (Thumb, 52 bytes, Stack size 24 bytes, rtx_msgqueue.o(i.MessageQueueGet))
