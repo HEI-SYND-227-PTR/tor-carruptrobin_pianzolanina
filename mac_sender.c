@@ -13,6 +13,7 @@ void MacSender(void *argument)
 	struct queueMsg_t tokenMsg;
 	bool iHavetheToken = false;
 	osStatus_t retCode;
+	uint8_t dataBackErrorCounter = 0;
 	queue_messBuff_id = osMessageQueueNew(2, sizeof(struct queueMsg_t), &queue_messBuff_attr);
 
 	//------------------------------------------------------------------------------
@@ -33,24 +34,55 @@ void MacSender(void *argument)
 
 			if (read == 1 && ack == 1) // Message has made a full circle and is okay
 			{
+				dataBackErrorCounter = 0;
 				retCode = osMemoryPoolFree(memPool, dataPtr);
 				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 				queueMsg = tokenMsg;
+				queueMsg.type = TO_PHY;
 				iHavetheToken = false;
 			}
 			else
 			{
-				read = 0;
-				ack = 0;
-				dataPtr[3 + dataPtr[2]] = dataPtr[3 + dataPtr[2]] & (ack + (read << 1));
-				queueMsg.type = TO_PHY;
-				queueMsg.anyPtr = dataPtr;
+				dataBackErrorCounter++;
+				if(dataBackErrorCounter == 3)
+				{
+					queueMsg.type = MAC_ERROR;
+					char* errorMessage = "MAC Error"
+					char* msg = osMemoryPoolAlloc(memPool, osWaitForever);
+					strcpy(msg,errorMessage);
+					queueMsg.addr = gTokenInterface.myAddress;
+					retCode = osMessageQueuePut(
+						queue_lcd_id,
+						&queueMsg,
+						osPriorityNormal,
+						osWaitForever);
+					CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
+					queueMsg = tokenMsg;
+					queueMsg.type = TO_PHY;
+					iHavetheToken = false;
+				}
+				else
+				{
+					read = 0;
+					ack = 0;
+					dataPtr[3 + dataPtr[2]] = dataPtr[3 + dataPtr[2]] & (ack + (read << 1));
+					queueMsg.type = TO_PHY;
+					queueMsg.anyPtr = dataPtr;
+				}
 			}
 		}
 		else if (queueMsg.type == TOKEN)
 		{
 			iHavetheToken = true;
 			tokenMsg = queueMsg;
+
+			queueMsg.type = TOKEN_LIST;
+			retCode = osMessageQueuePut(
+				queue_lcd_id,
+				&queueMsg,
+				osPriorityNormal,
+				osWaitForever);
+			CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);			
 
 			if (osMessageQueueGetCount(queue_messBuff_id) != 0)
 			{
@@ -66,7 +98,7 @@ void MacSender(void *argument)
 				case NEW_TOKEN:
 				{
 					uint8_t *msg = osMemoryPoolAlloc(memPool, osWaitForever);
-					msg[0] = 0xFF;
+					msg[0] = TOKEN_TAG;
 					for (uint8_t i = 0; i < 15; i++)
 					{
 						msg[1 + i] = gTokenInterface.station_list[i];
@@ -83,6 +115,7 @@ void MacSender(void *argument)
 					uint8_t *dataPtr = (uint8_t *)queueMsg.anyPtr;
 					dataPtr[gTokenInterface.myAddress + 1] = dataPtr[gTokenInterface.myAddress + 1] | ((1 << CHAT_SAPI) + (1 << TIME_SAPI));
 					queueMsg.type = TO_PHY;
+					iHavetheToken = false;
 				}
 					break;
 				case STOP:
@@ -92,6 +125,7 @@ void MacSender(void *argument)
 					uint8_t *dataPtr = (uint8_t *)queueMsg.anyPtr;
 					dataPtr[gTokenInterface.myAddress + 1] = dataPtr[gTokenInterface.myAddress + 1] | ((0 << CHAT_SAPI) + (1 << TIME_SAPI));
 					queueMsg.type = TO_PHY;
+					iHavetheToken = false;
 				}
 					break;
 				case DATA_IND:
