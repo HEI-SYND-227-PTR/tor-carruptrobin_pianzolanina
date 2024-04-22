@@ -40,7 +40,7 @@ void MacReceiver(void *argument)
 				if(destAddr == gTokenInterface.myAddress) // Send up and to PHY_S
 				{
 					bool read = true;
-					bool ack = true;
+					bool ack = false;
 
 					// CRC Compute
 					uint8_t crc = dataPtr[0] + dataPtr[1] + dataPtr[2];
@@ -48,7 +48,7 @@ void MacReceiver(void *argument)
 					{
 						crc = crc + dataPtr[3 + i];
 					}
-					if(crc == (dataPtr[3 + dataPtr[2]] >> 2)) //CRC Check
+					if((crc & 0b00111111) == (dataPtr[3 + dataPtr[2]] >> 2)) //CRC Check
 					{
 						ack = true;
 					}
