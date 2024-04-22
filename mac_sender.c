@@ -47,7 +47,7 @@ void MacSender(void *argument)
 				if(dataBackErrorCounter == 3)
 				{
 					queueMsg.type = MAC_ERROR;
-					char* errorMessage = "MAC Error"
+					char* errorMessage = "MAC Error";
 					char* msg = osMemoryPoolAlloc(memPool, osWaitForever);
 					strcpy(msg,errorMessage);
 					queueMsg.addr = gTokenInterface.myAddress;
@@ -105,7 +105,7 @@ void MacSender(void *argument)
 					}
 					msg[16] = 0;
 					queueMsg.type = NEW_TOKEN;
-					queueMsg.addr = msg;
+					queueMsg.anyPtr = msg;
 				}
 				break;
 				case START:
