@@ -19,7 +19,7 @@ void MacSender(void *argument)
 	for (;;) // loop until doomsday
 	{
 		retCode = osMessageQueueGet(
-			queue_chatR_id,
+			queue_macS_id,
 			&queueMsg,
 			NULL,
 			osWaitForever);
@@ -78,12 +78,20 @@ void MacSender(void *argument)
 				break;
 				case START:
 				{
-
+					gTokenInterface.connected = true;
+					queueMsg = tokenMsg;
+					uint8_t *dataPtr = (uint8_t *)queueMsg.anyPtr;
+					dataPtr[gTokenInterface.myAddress + 1] = dataPtr[gTokenInterface.myAddress + 1] | ((1 << CHAT_SAPI) + (1 << TIME_SAPI));
+					queueMsg.type = TO_PHY;
 				}
 					break;
 				case STOP:
 				{
-					
+					gTokenInterface.connected = false;
+					queueMsg = tokenMsg;
+					uint8_t *dataPtr = (uint8_t *)queueMsg.anyPtr;
+					dataPtr[gTokenInterface.myAddress + 1] = dataPtr[gTokenInterface.myAddress + 1] | ((0 << CHAT_SAPI) + (1 << TIME_SAPI));
+					queueMsg.type = TO_PHY;
 				}
 					break;
 				case DATA_IND:
@@ -103,6 +111,9 @@ void MacSender(void *argument)
 					bool ack = false;
 					uint8_t status = (crc << 2) + (read << 1) + ack;
 					msg[3 + length] = status;
+
+					retCode = osMemoryPoolFree(memPool,queueMsg.anyPtr);
+					CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 
 					queueMsg.type = TO_PHY;
 					queueMsg.anyPtr = msg;
