@@ -58,7 +58,7 @@ void MacReceiver(void *argument)
 					memcpy(msg,&dataPtr[3],dataPtr[2]);
 					msg[dataPtr[2]+1] = '\0';
 
-					if(destAddr != srcAddr)
+					if(destAddr != srcAddr && gTokenInterface.connected == true)
 					{
 						queueMsg.type = TO_PHY;
 						retCode = osMessageQueuePut(
@@ -85,7 +85,7 @@ void MacReceiver(void *argument)
 					queueMsg.anyPtr = msg;
 					queueMsg.addr = srcAddr;
 					queueMsg.sapi = srcSapi;
-					if(ack)
+					if(ack == true && gTokenInterface.connected == true)
 					{
 						if(destSapi == CHAT_SAPI)
 						{
