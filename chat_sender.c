@@ -53,7 +53,16 @@ void ChatSender(void *argument)
 	// Initialize the keyboard
 	//------------------------------------------------------------------------------
 	Ext_Keyboard_Init();
-
+	queueMsg.type = START;						// message type
+	//------------------------------------------------------------------------
+	// QUEUE SEND	(send START of STOP to mac sender)
+	//------------------------------------------------------------------------
+	retCode = osMessageQueuePut(
+		queue_macS_id,
+		&queueMsg,
+		osPriorityNormal,
+		osWaitForever);
+	CheckRetCode(retCode,__LINE__,__FILE__,CONTINUE);	
 	//------------------------------------------------------------------------------
 	for (;;)														// loop until doomsday
 	{
