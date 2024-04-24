@@ -85,24 +85,31 @@ void MacReceiver(void *argument)
 					queueMsg.anyPtr = msg;
 					queueMsg.addr = srcAddr;
 					queueMsg.sapi = srcSapi;
-
-					if(destSapi == CHAT_SAPI)
+					if(ack)
 					{
-						retCode = osMessageQueuePut(
-							queue_chatR_id,
-							&queueMsg,
-							osPriorityNormal,
-							osWaitForever);
-						CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);	
+						if(destSapi == CHAT_SAPI)
+						{
+							retCode = osMessageQueuePut(
+								queue_chatR_id,
+								&queueMsg,
+								osPriorityNormal,
+								osWaitForever);
+							CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);	
+						}
+						else if (destSapi == TIME_SAPI)
+						{
+							retCode = osMessageQueuePut(
+								queue_timeR_id,
+								&queueMsg,
+								osPriorityNormal,
+								osWaitForever);
+							CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);							
+						}
 					}
-					else if (destSapi == TIME_SAPI)
+					else
 					{
-						retCode = osMessageQueuePut(
-							queue_timeR_id,
-							&queueMsg,
-							osPriorityNormal,
-							osWaitForever);
-						CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);							
+						retCode = osMemoryPoolFree(memPool,queueMsg.anyPtr);
+						CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 					}
 				}
 				else if(srcAddr == gTokenInterface.myAddress) // Send Databack

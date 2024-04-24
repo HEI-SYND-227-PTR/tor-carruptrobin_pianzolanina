@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\tokenring_project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\tokenring_project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Apr 24 15:40:22 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Apr 24 15:59:09 2024
 <BR><P>
 <H3>Maximum Stack Usage =        576 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -3085,13 +3085,14 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.main)
 </UL>
-<P><STRONG><a name="[94]"></a>MacReceiver</STRONG> (Thumb, 476 bytes, Stack size 24 bytes, mac_receiver.o(i.MacReceiver))
+<P><STRONG><a name="[94]"></a>MacReceiver</STRONG> (Thumb, 508 bytes, Stack size 24 bytes, mac_receiver.o(i.MacReceiver))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216 + Unknown Stack Size
 <LI>Call Chain = MacReceiver &rArr; CheckRetCode &rArr; __2printf &rArr; _printf_char_file &rArr; _mutex_release &rArr; os_kernel_is_active &rArr; osKernelGetState &rArr; svcRtxKernelGetState &rArr; EvrRtxKernelGetState &rArr; EventRecord2 &rArr; EventRecordItem
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMemoryPoolAlloc
 <LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueuePut
 <LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMessageQueueGet
+<LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osMemoryPoolFree
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CheckRetCode
 <LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
@@ -5090,6 +5091,7 @@ Global Symbols
 <LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EvrRtxMemoryPoolFree
 </UL>
 <BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MacSender
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MacReceiver
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DebugStation
 </UL>

@@ -78,7 +78,7 @@ void MacSender(void *argument)
 					retCode = osMemoryPoolFree(memPool,queueMsg.anyPtr);
 					CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 					queueMsg.type = MAC_ERROR;
-					char* errorMessage = "MAC Error : \n Failed after 20 tries";
+					char* errorMessage = "MAC Error : \nFailed after 20 tries";
 					char* msg = osMemoryPoolAlloc(memPool, osWaitForever);
 					strcpy(msg,errorMessage);
 					queueMsg.addr = gTokenInterface.myAddress;
