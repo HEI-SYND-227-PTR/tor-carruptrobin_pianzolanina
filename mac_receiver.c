@@ -21,7 +21,7 @@ void MacReceiver(void *argument)
 		{
 			if(dataPtr[0] == TOKEN_TAG)
 			{
-				queueMsg.type = TOKEN;
+				queueMsg.type = TOKEN; 
 				retCode = osMessageQueuePut(
 					queue_macS_id,
 					&queueMsg,
@@ -37,7 +37,8 @@ void MacReceiver(void *argument)
 				uint8_t destSapi = (dataPtr[1] & 0b111);
 				
 				
-				if(destAddr == gTokenInterface.myAddress) // Send up and to PHY_S
+				if((destAddr == gTokenInterface.myAddress)|| // Send up and to PHY_S
+					(destAddr == 0xF))
 				{
 					bool read = true;
 					bool ack = false;
