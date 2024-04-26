@@ -70,6 +70,28 @@ void MacSender(void *argument)
 				queueMsg.type = TO_PHY;
 				iHavetheToken = false;
 			}
+			else if (read == 0 && ack == 0) // Message has no receiver
+			{
+				dataBackErrorCounter = 0;
+				retCode = osMemoryPoolFree(memPool, dataPtr);
+				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
+				
+				queueMsg.type = MAC_ERROR;
+				char* errorMessage = "MAC Error : \nNo receiving Station";
+				char* msg = osMemoryPoolAlloc(memPool, osWaitForever);
+				strcpy(msg,errorMessage);
+				queueMsg.addr = gTokenInterface.myAddress;
+				retCode = osMessageQueuePut(
+						queue_lcd_id,
+						&queueMsg,
+						osPriorityNormal,
+						osWaitForever);
+				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
+				
+				queueMsg = tokenMsg;
+				queueMsg.type = TO_PHY;
+				iHavetheToken = false;
+			}
 			else
 			{
 				dataBackErrorCounter++;

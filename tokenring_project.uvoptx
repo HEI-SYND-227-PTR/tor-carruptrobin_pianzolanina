@@ -157,41 +157,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>59</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>134310996</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\phy_sender.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\tokenring_project\phy_sender.c\59</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>45</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>134310940</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\phy_sender.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\tokenring_project\phy_sender.c\45</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
           <LineNumber>60</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134254494</Address>
+          <Address>134254266</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -203,11 +171,11 @@
           <Expression>\\\mac_receiver.c\60</Expression>
         </Bp>
         <Bp>
-          <Number>3</Number>
+          <Number>1</Number>
           <Type>0</Type>
           <LineNumber>58</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134254470</Address>
+          <Address>134254242</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -219,11 +187,11 @@
           <Expression>\\\mac_receiver.c\58</Expression>
         </Bp>
         <Bp>
-          <Number>4</Number>
+          <Number>2</Number>
           <Type>0</Type>
           <LineNumber>71</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134255102</Address>
+          <Address>134254874</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -235,11 +203,11 @@
           <Expression>\\tokenring_project\mac_sender.c\71</Expression>
         </Bp>
         <Bp>
-          <Number>5</Number>
+          <Number>3</Number>
           <Type>0</Type>
           <LineNumber>70</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134255096</Address>
+          <Address>134254868</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -251,11 +219,11 @@
           <Expression>\\tokenring_project\mac_sender.c\70</Expression>
         </Bp>
         <Bp>
-          <Number>6</Number>
+          <Number>4</Number>
           <Type>0</Type>
           <LineNumber>68</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134255076</Address>
+          <Address>134254848</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -267,11 +235,11 @@
           <Expression>\\tokenring_project\mac_sender.c\68</Expression>
         </Bp>
         <Bp>
-          <Number>7</Number>
+          <Number>5</Number>
           <Type>0</Type>
           <LineNumber>56</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134255006</Address>
+          <Address>134254778</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -283,11 +251,11 @@
           <Expression>\\\mac_sender.c\56</Expression>
         </Bp>
         <Bp>
-          <Number>8</Number>
+          <Number>6</Number>
           <Type>0</Type>
           <LineNumber>45</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134252410</Address>
+          <Address>134252290</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -299,11 +267,11 @@
           <Expression>\\tokenring_project\lcd.c\45</Expression>
         </Bp>
         <Bp>
-          <Number>9</Number>
+          <Number>7</Number>
           <Type>0</Type>
           <LineNumber>60</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134266002</Address>
+          <Address>134265818</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -315,11 +283,11 @@
           <Expression>\\tokenring_project\time_sender.c\60</Expression>
         </Bp>
         <Bp>
-          <Number>10</Number>
+          <Number>8</Number>
           <Type>0</Type>
           <LineNumber>57</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134265980</Address>
+          <Address>134265796</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -331,11 +299,11 @@
           <Expression>\\tokenring_project\time_sender.c\57</Expression>
         </Bp>
         <Bp>
-          <Number>11</Number>
+          <Number>9</Number>
           <Type>0</Type>
           <LineNumber>45</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134265950</Address>
+          <Address>134265766</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -347,7 +315,7 @@
           <Expression>\\tokenring_project\time_sender.c\45</Expression>
         </Bp>
         <Bp>
-          <Number>12</Number>
+          <Number>10</Number>
           <Type>0</Type>
           <LineNumber>62</LineNumber>
           <EnabledFlag>0</EnabledFlag>
@@ -363,7 +331,7 @@
           <Expression>\\tokenring_project\phy_receiver.c\62</Expression>
         </Bp>
         <Bp>
-          <Number>13</Number>
+          <Number>11</Number>
           <Type>0</Type>
           <LineNumber>60</LineNumber>
           <EnabledFlag>0</EnabledFlag>
@@ -379,7 +347,7 @@
           <Expression>\\tokenring_project\phy_receiver.c\60</Expression>
         </Bp>
         <Bp>
-          <Number>14</Number>
+          <Number>12</Number>
           <Type>0</Type>
           <LineNumber>59</LineNumber>
           <EnabledFlag>0</EnabledFlag>
@@ -395,7 +363,7 @@
           <Expression>\\tokenring_project\phy_receiver.c\59</Expression>
         </Bp>
         <Bp>
-          <Number>15</Number>
+          <Number>13</Number>
           <Type>0</Type>
           <LineNumber>57</LineNumber>
           <EnabledFlag>0</EnabledFlag>
@@ -411,11 +379,11 @@
           <Expression>\\tokenring_project\phy_receiver.c\57</Expression>
         </Bp>
         <Bp>
-          <Number>16</Number>
+          <Number>14</Number>
           <Type>0</Type>
           <LineNumber>62</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134252540</Address>
+          <Address>134252420</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -427,11 +395,11 @@
           <Expression>\\tokenring_project\lcd.c\62</Expression>
         </Bp>
         <Bp>
-          <Number>17</Number>
+          <Number>15</Number>
           <Type>0</Type>
           <LineNumber>59</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134252500</Address>
+          <Address>134252380</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -443,11 +411,11 @@
           <Expression>\\tokenring_project\lcd.c\59</Expression>
         </Bp>
         <Bp>
-          <Number>18</Number>
+          <Number>16</Number>
           <Type>0</Type>
           <LineNumber>62</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134266010</Address>
+          <Address>134265826</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -459,11 +427,11 @@
           <Expression>\\tokenring_project\time_sender.c\62</Expression>
         </Bp>
         <Bp>
-          <Number>19</Number>
+          <Number>17</Number>
           <Type>0</Type>
           <LineNumber>59</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134265988</Address>
+          <Address>134265804</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -475,11 +443,11 @@
           <Expression>\\tokenring_project\time_sender.c\59</Expression>
         </Bp>
         <Bp>
-          <Number>20</Number>
+          <Number>18</Number>
           <Type>0</Type>
           <LineNumber>57</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134252482</Address>
+          <Address>134252362</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -491,11 +459,11 @@
           <Expression>\\tokenring_project\lcd.c\57</Expression>
         </Bp>
         <Bp>
-          <Number>21</Number>
+          <Number>19</Number>
           <Type>0</Type>
           <LineNumber>60</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134252514</Address>
+          <Address>134252394</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -507,7 +475,7 @@
           <Expression>\\tokenring_project\lcd.c\60</Expression>
         </Bp>
         <Bp>
-          <Number>22</Number>
+          <Number>20</Number>
           <Type>0</Type>
           <LineNumber>88</LineNumber>
           <EnabledFlag>0</EnabledFlag>
@@ -609,7 +577,7 @@
         <aLa>0</aLa>
         <aPa1>0</aPa1>
         <AscS4>0</AscS4>
-        <aSer4>1</aSer4>
+        <aSer4>0</aSer4>
         <StkLoc>0</StkLoc>
         <TrcWin>0</TrcWin>
         <newCpu>0</newCpu>
