@@ -28,6 +28,15 @@ void MacReceiver(void *argument)
 					osPriorityNormal,
 					osWaitForever);
 				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
+			}else if(gTokenInterface.connected == false)
+			{
+				queueMsg.type = TO_PHY;
+				retCode = osMessageQueuePut(
+						queue_phyS_id,
+						&queueMsg,
+						osPriorityNormal,
+						osWaitForever);
+				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);	
 			}
 			else // Not a token
 			{
@@ -36,30 +45,31 @@ void MacReceiver(void *argument)
 				uint8_t srcSapi = (dataPtr[0] & 0b111);
 				uint8_t destSapi = (dataPtr[1] & 0b111);
 				
-				
-				if((destAddr == gTokenInterface.myAddress)|| // Send up and to PHY_S
-					(destAddr == 0xF))
+				if((destAddr == gTokenInterface.myAddress) || // Send up and to PHY_S
+						(destAddr == 0xF))
 				{
 					bool read = true;
 					bool ack = false;
 
-					// CRC Compute
-					uint8_t crc = dataPtr[0] + dataPtr[1] + dataPtr[2];
-					for (uint8_t i = 0; i < dataPtr[2]; i++)
+					if(destAddr != 0xF)
 					{
-						crc = crc + dataPtr[3 + i];
+						// CRC Compute
+						uint8_t crc = dataPtr[0] + dataPtr[1] + dataPtr[2];
+						for (uint8_t i = 0; i < dataPtr[2]; i++)
+						{
+							crc = crc + dataPtr[3 + i];
+						}
+						if((crc & 0b00111111) == (dataPtr[3 + dataPtr[2]] >> 2)) //CRC Check
+						{
+							ack = true;
+						}
+						dataPtr[3 + dataPtr[2]] = (dataPtr[3 + dataPtr[2]] & 0b11111100) + (ack + (read << 1));
 					}
-					if((crc & 0b00111111) == (dataPtr[3 + dataPtr[2]] >> 2)) //CRC Check
-					{
-						ack = true;
-					}
-					dataPtr[3 + dataPtr[2]] = (dataPtr[3 + dataPtr[2]] & 0b11111100) + (ack + (read << 1));
-
 					uint8_t *msg = osMemoryPoolAlloc(memPool, osWaitForever);
 					memcpy(msg,&dataPtr[3],dataPtr[2]);
 					msg[dataPtr[2]+1] = '\0';
 
-					if(destAddr != srcAddr && gTokenInterface.connected == true)
+					if((destAddr != srcAddr) && (gTokenInterface.connected == true))
 					{
 						queueMsg.type = TO_PHY;
 						retCode = osMessageQueuePut(
@@ -86,6 +96,7 @@ void MacReceiver(void *argument)
 					queueMsg.anyPtr = msg;
 					queueMsg.addr = srcAddr;
 					queueMsg.sapi = srcSapi;
+					
 					if(ack == true && gTokenInterface.connected == true)
 					{
 						if(destSapi == CHAT_SAPI)
