@@ -14,7 +14,7 @@ void MacSender(void *argument)
 	bool iHavetheToken = false;
 	osStatus_t retCode;
 	uint8_t dataBackErrorCounter = 0;
-	queue_messBuff_id = osMessageQueueNew(2, sizeof(struct queueMsg_t), &queue_messBuff_attr);
+	queue_messBuff_id = osMessageQueueNew(4, sizeof(struct queueMsg_t), &queue_messBuff_attr);
 
 	//------------------------------------------------------------------------------
 	for (;;) // loop until doomsday
