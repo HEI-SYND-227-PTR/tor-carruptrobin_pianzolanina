@@ -227,6 +227,11 @@ void MacSender(void *argument)
 				osPriorityNormal,
 				0);
 			CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
+			if(retCode != osOK)
+			{
+					retCode = osMemoryPoolFree(memPool,queueMsg.anyPtr);
+					CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
+			}
 		}
 	}
 }
