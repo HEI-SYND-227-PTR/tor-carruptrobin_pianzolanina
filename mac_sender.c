@@ -190,6 +190,11 @@ void MacSender(void *argument)
 					}
 					bool read = false;
 					bool ack = false;
+					if(queueMsg.addr == 0xF)
+					{
+						ack = true;
+						read = true;
+					}
 					uint8_t status = (crc << 2) + (read << 1) + ack;
 					msg[3 + length] = status;
 
@@ -223,7 +228,7 @@ void MacSender(void *argument)
 				queue_messBuff_id,
 				&queueMsg,
 				osPriorityNormal,
-				osWaitForever);
+				0);
 			CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 		}
 	}
