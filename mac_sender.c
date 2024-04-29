@@ -117,9 +117,6 @@ void MacSender(void *argument)
 				}
 				else
 				{
-					read = 0;
-					ack = 0;
-					dataPtr[3 + dataPtr[2]] = dataPtr[3 + dataPtr[2]] & (ack + (read << 1));
 					queueMsg.type = TO_PHY;
 					queueMsg.anyPtr = dataPtr;
 				}
