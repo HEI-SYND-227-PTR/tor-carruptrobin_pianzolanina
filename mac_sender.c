@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
+//Attributes for MAC-Sender internal Buffer Queue
 const osMessageQueueAttr_t queue_messBuff_attr = {
 	.name = "MAC_INTERNAL_BUFFER"};
 
@@ -9,16 +10,20 @@ osMessageQueueId_t queue_messBuff_id;
 
 void MacSender(void *argument)
 {
+	//Initialization for some needed variables
 	struct queueMsg_t queueMsg; // queue message
-	struct queueMsg_t tokenMsg;
+	struct queueMsg_t tokenMsg; // token
 	bool iHavetheToken = false;
 	osStatus_t retCode;
 	uint8_t dataBackErrorCounter = 0;
+
+	//Creation of internal Buffer Queue
 	queue_messBuff_id = osMessageQueueNew(4, sizeof(struct queueMsg_t), &queue_messBuff_attr);
 
 	//------------------------------------------------------------------------------
 	for (;;) // loop until doomsday
 	{
+		//Retrive next Input from queue (Waiting if nothing to retrive)
 		retCode = osMessageQueueGet(
 			queue_macS_id,
 			&queueMsg,
@@ -26,17 +31,19 @@ void MacSender(void *argument)
 			osWaitForever);
 		CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 		
-		
+		//Case of START received
 		if(queueMsg.type == START)
 		{
-				gTokenInterface.connected = true;
-				gTokenInterface.station_list[gTokenInterface.myAddress] = ((1 << CHAT_SAPI) + (1 << TIME_SAPI));
+				gTokenInterface.connected = true; 	//Adjust intern Important else not receiving on MAC-Receiver side
+				gTokenInterface.station_list[gTokenInterface.myAddress] = ((1 << CHAT_SAPI) + (1 << TIME_SAPI));	//Adjust station list with our station
 		}
+		//Case of STOP received
 		else if(queueMsg.type == STOP)
 		{
-				gTokenInterface.connected = false;
-				gTokenInterface.station_list[gTokenInterface.myAddress] = ((0 << CHAT_SAPI) + (1 << TIME_SAPI));
+				gTokenInterface.connected = false;	//Adjust intern
+				gTokenInterface.station_list[gTokenInterface.myAddress] = ((0 << CHAT_SAPI) + (1 << TIME_SAPI));	//Adjust station list, taking out our station
 		}
+		//Case NEW_TOKEN
 		else if(queueMsg.type == NEW_TOKEN)
 		{
 				uint8_t *msg = osMemoryPoolAlloc(memPool, osWaitForever);
