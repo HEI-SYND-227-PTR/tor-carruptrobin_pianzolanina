@@ -46,117 +46,130 @@ void MacSender(void *argument)
 		//Case NEW_TOKEN
 		else if(queueMsg.type == NEW_TOKEN)
 		{
-				uint8_t *msg = osMemoryPoolAlloc(memPool, osWaitForever);
-				msg[0] = TOKEN_TAG;
+				uint8_t *msg = osMemoryPoolAlloc(memPool, osWaitForever);	//Allocate memory from memory pool for the token
+				msg[0] = TOKEN_TAG;	//Token start identifier
 				for (uint8_t i = 0; i < 15; i++)
 				{
-					msg[1 + i] = gTokenInterface.station_list[i];
+					msg[1 + i] = gTokenInterface.station_list[i];			//put connected stations from our list into new token
 				}
 				msg[16] = 0;
 				queueMsg.type = NEW_TOKEN;
 				queueMsg.anyPtr = msg;			
-				retCode = osMessageQueuePut(
+				retCode = osMessageQueuePut(	//Send new token to Phy
 					queue_phyS_id,
 					&queueMsg,
 					osPriorityNormal,
 					osWaitForever);
 				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 		}
-		else if (queueMsg.type == DATABACK && iHavetheToken == true) // Todo next
+		// Case DATABACK (when we send a message we wait for the databack and check it), we keep the token during this!
+		else if (queueMsg.type == DATABACK && iHavetheToken == true) // Token still with us 
 		{
-			uint8_t *dataPtr = (uint8_t *)queueMsg.anyPtr;
-			bool read = (dataPtr[3 + dataPtr[2]] & 2) >> 1;
-			bool ack = (dataPtr[3 + dataPtr[2]] & 1);
+			uint8_t *dataPtr = (uint8_t *)queueMsg.anyPtr;				//Give a datatype to the void pointer -> Access to different elements easier
+			
+			bool read = (dataPtr[3 + dataPtr[2]] & 2) >> 1; 			//Read out read bit
+			bool ack = (dataPtr[3 + dataPtr[2]] & 1);					//Read out ack bit
 
-			if (read == 1 && ack == 1) // Message has made a full circle and is okay
+			if (read == 1 && ack == 1) 		// Message has made a full circle and is okay
 			{
-				dataBackErrorCounter = 0;
-				retCode = osMemoryPoolFree(memPool, dataPtr);
-				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
-				queueMsg = tokenMsg;
-				queueMsg.type = TO_PHY;
-				iHavetheToken = false;
-			}
-			else if (read == 0 && ack == 0) // Message has no receiver
-			{
-				dataBackErrorCounter = 0;
-				retCode = osMemoryPoolFree(memPool, dataPtr);
+				dataBackErrorCounter = 0;		//Counter because only limited resends
+				retCode = osMemoryPoolFree(memPool, dataPtr);		//free memory space of message, when received and validated from destination address -> No memory overuse
 				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 				
+				//Preparation to send token to next station (To_Phy)
+				queueMsg = tokenMsg;		//Put token back as message
+				queueMsg.type = TO_PHY;		
+				iHavetheToken = false;
+			}
+			else if (read == 0 && ack == 0) // Message has made a turn but no receiver on the ring
+			{
+				dataBackErrorCounter = 0;
+				retCode = osMemoryPoolFree(memPool, dataPtr);			//free memory space of message else message would turn forever and ring is blocked
+				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
+				
+				//send MAC Error message to lcd
 				queueMsg.type = MAC_ERROR;
-				char* errorMessage = "MAC Error : \nNo receiving Station";
-				char* msg = osMemoryPoolAlloc(memPool, osWaitForever);
-				strcpy(msg,errorMessage);
-				queueMsg.addr = gTokenInterface.myAddress;
-				retCode = osMessageQueuePut(
+				char* errorMessage = "MAC Error : \nNo receiving Station";		//Text which should be displayed
+				char* msg = osMemoryPoolAlloc(memPool, osWaitForever);			//Allocate memory space for this message
+				strcpy(msg,errorMessage);										//String copy into previously new allocated memory
+				queueMsg.addr = gTokenInterface.myAddress;						//Source address needed
+				retCode = osMessageQueuePut(									//Send to lcd queue
 						queue_lcd_id,
 						&queueMsg,
 						osPriorityNormal,
 						osWaitForever);
 				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 				
+				//Preparation to send token to next station (To_Phy)
 				queueMsg = tokenMsg;
 				queueMsg.type = TO_PHY;
 				iHavetheToken = false;
 			}
-			else
+			else		//Message has made a turn, was received but with error -> try resending 20 times
 			{
 				dataBackErrorCounter++;
-				if(dataBackErrorCounter == 20)
+				if(dataBackErrorCounter == 20)		//When limit of resending tries reached -> Error message to lcd and delete message
 				{
-					retCode = osMemoryPoolFree(memPool,queueMsg.anyPtr);
+					retCode = osMemoryPoolFree(memPool,queueMsg.anyPtr);		//free memory space of message else message would turn forever and ring is blocked
 					CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
+					
+					//send MAC Error message to lcd
 					queueMsg.type = MAC_ERROR;
-					char* errorMessage = "MAC Error : \nFailed after 20 tries";
-					char* msg = osMemoryPoolAlloc(memPool, osWaitForever);
-					strcpy(msg,errorMessage);
-					queueMsg.addr = gTokenInterface.myAddress;
-					retCode = osMessageQueuePut(
+					char* errorMessage = "MAC Error : \nFailed after 20 tries";		//Text which should be displayed
+					char* msg = osMemoryPoolAlloc(memPool, osWaitForever);			//Allocate memory space for this message
+					strcpy(msg,errorMessage);										//String copy into previously new allocated memory
+					queueMsg.addr = gTokenInterface.myAddress;						//Source address needed
+					retCode = osMessageQueuePut(									//Send to lcd queue
 						queue_lcd_id,
 						&queueMsg,
 						osPriorityNormal,
 						osWaitForever);
 					CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
+					
+					//Preparation to send token to next station (To_Phy)
 					queueMsg = tokenMsg;
 					queueMsg.type = TO_PHY;
 					iHavetheToken = false;
 					dataBackErrorCounter = 0;
 				}
-				else
+				else		//if limit of tries not reached -> resend
 				{
 					queueMsg.type = TO_PHY;
 					queueMsg.anyPtr = dataPtr;
 				}
 			}
-			retCode = osMessageQueuePut(
+			retCode = osMessageQueuePut(			//Send whatever was previously in the databack section prepared to send to PHY (Token, resending message, message to lcd)
 				queue_phyS_id,
 				&queueMsg,
 				osPriorityNormal,
 				osWaitForever);
 			CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 		}
+		//Case TOKEN
 		else if (queueMsg.type == TOKEN)
 		{
-			iHavetheToken = true;
-			tokenMsg = queueMsg;
-			uint8_t *dataPtr = (uint8_t *)queueMsg.anyPtr;
-			bool stationHasChanged = false;
+			iHavetheToken = true;		//Variable just for us to see if we have token and databack to be sure
+			tokenMsg = queueMsg;		//Store token 
+			uint8_t *dataPtr = (uint8_t *)queueMsg.anyPtr;			//Give a datatype to the void pointer -> Access to different elements easier
+			
+			//Check wheter station list was updated
+			bool stationHasChanged = false;							
 			for(uint8_t i=0; i<15;i++)
 			{
-				if(gTokenInterface.station_list[i] != dataPtr[i + 1])
+				if(gTokenInterface.station_list[i] != dataPtr[i + 1])		//check if differences
 				{
 					stationHasChanged = true;
 				}
-				if(i != gTokenInterface.myAddress)
+				if(i != gTokenInterface.myAddress)			//Adjust our station list if station is not us
 				{
 					gTokenInterface.station_list[i] = dataPtr[i+1];
 				}
-				else
+				else										//When our station put our correct info into the token
 				{
 					dataPtr[i+1] = gTokenInterface.station_list[i];
 				}
 			}
-			if(stationHasChanged)
+			if(stationHasChanged)		//When station list updated -> send to lcd
 			{
 				stationHasChanged = false;
 				queueMsg.type = TOKEN_LIST;
@@ -168,9 +181,10 @@ void MacSender(void *argument)
 				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);	
 			}
 
+			//Next we look if there is something in the buffer to send
 			if (osMessageQueueGetCount(queue_messBuff_id) != 0)
 			{
-				retCode = osMessageQueueGet(
+				retCode = osMessageQueueGet(			//Get message from Mac send internal buffer
 					queue_messBuff_id,
 					&queueMsg,
 					NULL,
