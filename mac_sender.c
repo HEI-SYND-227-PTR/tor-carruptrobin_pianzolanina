@@ -191,38 +191,38 @@ void MacSender(void *argument)
 					osWaitForever);
 				CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 
-				switch (queueMsg.type)
+				//Case DATA_IND
+				if(queueMsg.type == DATA_IND)		//only DATA_IND should be in MAC_S internal buffer
 				{
-				case DATA_IND:
-				{
-					uint8_t *msg = osMemoryPoolAlloc(memPool, osWaitForever);
-					msg[0] = (gTokenInterface.myAddress << 3) + queueMsg.sapi; // Control 1
-					msg[1] = (queueMsg.addr << 3) + queueMsg.sapi;
-					size_t length = strlen(queueMsg.anyPtr);
+					uint8_t *msg = osMemoryPoolAlloc(memPool, osWaitForever);			//Allocate memory space for this message
+					msg[0] = (gTokenInterface.myAddress << 3) + queueMsg.sapi; 			//Put myAddress as source Addres and right sapi
+					msg[1] = (queueMsg.addr << 3) + queueMsg.sapi;						//Put address received from queue as destination address and right sapi 
+					size_t length = strlen(queueMsg.anyPtr);							//Length of Message also needs to be in data
 					msg[2] = length;
-					memcpy(&msg[3], queueMsg.anyPtr, length);
-					uint8_t crc = msg[0] + msg[1] + msg[2];
-					for (uint8_t i = 0; i < length; i++)
+					memcpy(&msg[3], queueMsg.anyPtr, length);							//Copy data from queue into new message
+					
+					//Calculate CRC (sum of all)
+					uint8_t crc = msg[0] + msg[1] + msg[2];								//CRC for first 3 bytes
+					for (uint8_t i = 0; i < length; i++)								//Calculate crc for rest of message
 					{
 						crc = crc + msg[3 + i];
 					}
+
 					bool read = false;
 					bool ack = false;
-					if(queueMsg.addr == 0xF)
+					if(queueMsg.addr == 0xF)				//for broadcast messages read and ack allways 1
 					{
 						ack = true;
 						read = true;
 					}
-					uint8_t status = (crc << 2) + (read << 1) + ack;
+					uint8_t status = (crc << 2) + (read << 1) + ack;					//Put CRC, read and ack at end of message
 					msg[3 + length] = status;
 
-					retCode = osMemoryPoolFree(memPool,queueMsg.anyPtr);
+					retCode = osMemoryPoolFree(memPool,queueMsg.anyPtr);				//Free memory space occupied by old message (to not use unneccesary memory space)
 					CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 
-					queueMsg.type = TO_PHY;
-					queueMsg.anyPtr = msg;
-				}
-				break;
+					queueMsg.type = TO_PHY;				//Prepare to send to PHY
+					queueMsg.anyPtr = msg;				//Put the queue pointer to the new created message
 				}
 			}
 			else
