@@ -225,14 +225,12 @@ void MacSender(void *argument)
 					queueMsg.anyPtr = msg;				//Put the queue pointer to the new created message
 				}
 			}
-			else
+			else		//If buffer is empty -> prepare to send token to next station
 			{
 				queueMsg = tokenMsg;
 			}
 
-			//--------------------------------------------------------------------------
-			// QUEUE SEND	(send received frame to physical layer sender)
-			//--------------------------------------------------------------------------
+			//Send message or token (whichever was previously prepared) to Phy 
 			retCode = osMessageQueuePut(
 				queue_phyS_id,
 				&queueMsg,
@@ -240,14 +238,15 @@ void MacSender(void *argument)
 				osWaitForever);
 			CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
 		}
-		else
+		else		//If message from MAC-S queue is Data_ind (not token, new token, start, stop or databack)
 		{
-			retCode = osMessageQueuePut(
+			retCode = osMessageQueuePut(		//Put in Mac-s internal buffer queue
 				queue_messBuff_id,
 				&queueMsg,
 				osPriorityNormal,
 				0);
 			CheckRetCode(retCode, __LINE__, __FILE__, CONTINUE);
+			//If buffer is full don't place more messages and free the memory space used by them to not overflow
 			if(retCode != osOK)
 			{
 					retCode = osMemoryPoolFree(memPool,queueMsg.anyPtr);
