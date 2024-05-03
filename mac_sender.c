@@ -1,3 +1,9 @@
+/**
+ * The `MacSender` function handles the processing and forwarding of messages in a network system,
+ * including token management, message validation, error handling, and communication with other network
+ * components.
+ */
+
 #include "main.h"
 #include <stdio.h>
 #include <string.h>
